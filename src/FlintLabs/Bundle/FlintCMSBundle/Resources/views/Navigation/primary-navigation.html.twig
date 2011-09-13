@@ -1,0 +1,9 @@
+<ul>
+    {% for page in nav.top(node) %}
+        <li{% if nav.active(page) %} class="active"{% endif %}>
+            <a href="{{ nav.url(page) }}">
+                {{ page.label }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

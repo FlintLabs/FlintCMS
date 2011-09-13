@@ -1,0 +1,9 @@
+<ul>
+    {% for page in nav.path(node) %}
+        <li>
+            <a href="{{ nav.url(page) }}">
+                {{ page.label }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

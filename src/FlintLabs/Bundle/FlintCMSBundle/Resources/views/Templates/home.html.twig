@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>{{title}}</h1>
+        <nav>
+            {% include 'FlintLabsFlintCMSBundle:Navigation:primary-navigation.html.twig' %}
+        </nav>
+    </header>
+    <article>
+        {% flint_region 0 %}
+    </article>
+{% endblock %}

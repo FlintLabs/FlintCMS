@@ -1,0 +1,297 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+{% block menu %}
+<span class="label">
+    <span class="icon">
+        <img src="{{ asset('bundles/FlintLabsFlintCMSprofiler/images/cms.png') }}" />
+    </span>
+    <strong>CMS Dispatcher</strong>
+    <span class="count">
+        <span>{{ collector.collectionCount }}</span>
+    </span>
+</span>
+{% endblock %}
+
+{% block toolbar %}
+    {% set icon %}
+        <img alt="CMS" style="border-width: 0; vertical-align: middle; margin-right: 5px;" src="{{ asset('bundles/FlintLabsFlintCMSprofiler/images/cms-sml.png') }}"/>
+    {% endset %}
+    {#{% set text %}#}
+        {#<span title="{{ collector.collectionCount }}">{{ collector.collectionCount }}</span>#}
+    {#{% endset %}#}
+    {% include 'WebProfilerBundle:Profiler:toolbar_item.html.twig' with { 'link': profiler_url } %}
+{% endblock %}
+
+
+
+
+{% block panel %}
+    <a id="top"></a>
+    {% if collector.collections|length %}
+    
+        {% if collector.collections.node %}
+            <h2>Dispatched Node</h2>
+            <table>
+                <tr>
+                    <th width="25%">Node</th>
+                    <td>{{ collector.collections.node.label }} Id: {{ collector.collections.node.id }} (see <a href="#fragments">Fragments</a>)</td>
+                </tr>
+                <tr valign="top">
+                    <th>Node Fragment</th>
+                    <td><a href="#fragment-{{collector.collections.nodeAttachedFragment.id}}">{{ collector.collections.nodeAttachedFragment.cmsType.title}}</a><br/>
+                        <em>Key: {{ collector.collections.nodeAttachedFragment.type }}<br/>
+                        Id: {{ collector.collections.nodeAttachedFragment.id }}</em>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th>Data</th>
+                    <td>{% for data in collector.collections.nodeAttachedFragment.view %}
+                    <a href="#attribute-{{collector.collections.nodeAttachedFragment.id}}-{{data}}">{{data}}</a>
+                    {% endfor %}
+                    </td>
+                </tr>
+
+                <tr valign="top">
+                    <th>View used</th>
+                    <td>
+                        {% if collector.collections.nodeAttachedFragment.used is defined %}
+                        <strong>{{collector.collections.nodeAttachedFragment.used}}</strong><br/>
+                        {% else %}
+                        <strong style="color: red">View not found!</strong><br/>
+                        {% endif %}
+                        <em>Searched: {{collector.collections.nodeAttachedFragment.searchedPaths}}</em>
+                    </td>
+                </tr>
+
+                {% if collector.collections.template %}
+                {% set template = collector.collections.template %}
+                <tr valign="top">
+                    <th>Template Overview</th>
+                    <td>
+                        <strong>{{template.title}} (Key: {{template.key}})</strong><br/>
+                        <em>{{template.description}}</em>
+                        <table>
+                            <tr valign="top">
+                                <th>Configuration File Location</th>
+                                <td>
+                                    {{template.config}}
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th width="25%">Specified File</th>
+                                <td>
+                                    {{template.file}}
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th>Thumbnail</th>
+                                <td>{{template.thumbnail}}</td>
+                            </tr>
+                            <tr valign="top">
+                                <th>Regions Available</th>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <th>Region</th>
+                                            <th>Key</th>
+                                        </tr>
+                                        {% for region in template.regions %}
+                                        <tr>
+                                            <td>
+                                                <a href="#region-{{region.id}}">{{region.title}}</a>
+                                            </td>
+                                            <td>{{region.key}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        {% endif %}
+
+        <h2 id="fragments">Attached Fragments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th width="25%">Type</th>
+                    <th>Location Placed</th>
+                    <th>View Data Keys</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr valign="top">
+                    <td><a href="#fragment-{{collector.collections.nodeAttachedFragment.id}}">{{collector.collections.nodeAttachedFragment.cmsType.title}}</a><br/>
+                     <em>Key: {{ collector.collections.nodeAttachedFragment.type }}<br/>
+                     Id: {{ collector.collections.nodeAttachedFragment.id }}</em>
+                    </td>
+                    <td>
+                        Attached to tree
+                    </td>
+                    <td>
+                        {% for data in collector.collections.nodeAttachedFragment.view %}
+                            <a href="#">{{data}}</a>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% if collector.collections.children %}
+                    {% for regionKey, region in collector.collections.children %}
+                        {% for children in region %}
+                            <tr valign="top">
+                                <td><a href="#fragment-{{children.id}}">{{children.cmsType.title}}</a><br/>
+                                <em>Key: {{children.type}}<br/>
+                                Id: {{children.id}}</em>
+
+                                </td>
+                                <td>
+                                {% if template.regions[children.region+1]%}
+                                    <a href="#region-{{children.region}}">{{template.regions[children.region+1].title}}</a><br/>
+                                    <em>Key: {{template.regions[children.region+1].key}})</em>
+                                {% else %}
+                                    Region ID: {{children.region}}<br/>
+                                    <em>Warning: Could not find the region in the template</em>
+                                {% endif %}
+                                </td>
+                                <td>
+                                    {% for child in children.view %}
+                                        <a href="#fragment-{{children.id}}-{{child}}">
+                                            {{ child }}
+                                        </a>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+
+        <h2>Node Attached Fragment</h2>
+        {% set children = collector.collections.nodeAttachedFragment %}
+        <h3 id="fragment-{{children.id}}">Fragment: {{children.cmsType.title}}</h3>
+
+        <table>
+            <tr valign="top">
+                <th width="25%">Fragment</th>
+                <td>{{ children.cmsType.title}}<br/>
+                    <em>Key: {{ children.type }}<br/>
+                    Id: {{ children.id }}</em>
+                </td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{% for data in children.view %}
+                    <a href="#attribute-{{children.id}}-{{data}}">{{data}}</a>
+                {% endfor %}
+                </td>
+            </tr>
+
+            <tr>
+                <th>View used</th>
+                <td>
+                    {% if children.used is defined %}
+                    <strong>{{children.used}}</strong><br/>
+                    {% else %}
+                    <strong style="color: red">View not found!</strong><br/>
+                    {% endif %}
+                    <em>Searched: {{children.searchedPaths}}</em>
+                </td>
+            </tr>
+
+        </table>
+
+        <table>
+            {% for child in children.viewDataStructure %}
+            <tr id="fragment-{{children.id}}-{{child.key}}" valign="top">
+                <th width="25%">{{child.key}}</th>
+                <th>{% if(child.type) %}
+                    {{child.type}}
+                    <br/>
+
+                    <em>{% for configuration in child.configuration %}
+                        {{configuration.key}}="{{configuration.value}}"<br/>
+                    {% endfor %}</em>
+                    {% else %}
+                        Unknown Type
+                        <br/><em>Usually injected into the site by listeners</em>
+                    {% endif %}
+                </th>
+            </tr>
+
+            <tr>
+                <td colspan="3"><strong><a href="#">Data Structure [+]</a></strong>
+<pre>
+{{child.debug}}
+</pre>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% for regionKey, region in collector.collections.children %}
+            <h2 id="region-{{regionKey}}">Region: {{ template.regions[regionKey+1].title}} (Key: {{template.regions[regionKey+1].key}})</h2>
+            {% for children in region %}
+                <h3 id="fragment-{{children.id}}">Fragment: {{children.cmsType.title}}</h3>
+
+                <table>
+                    <tr valign="top">
+                        <th width="25%">Fragment</th>
+                        <td>{{ children.cmsType.title}}<br/>
+                            <em>Key: {{ children.type }}<br/>
+                            Id: {{ children.id }}</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Data</th>
+                        <td>{% for data in children.view %}
+                            <a href="#attribute-{{children.id}}-{{data}}">{{data}}</a>
+                        {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>View used</th>
+                        <td>
+                            {% if children.used is defined %}
+                                <strong>{{children.used}}</strong><br/>
+                            {% else %}
+                                <strong style="color: red">No view found!</strong><br/>
+                            {% endif %}
+                            <em>Searched: {{children.searchedPaths}}</em>
+                        </td>
+                    </tr>
+                </table>
+
+                <table>
+                    {% for child in children.viewDataStructure %}
+                    <tr id="fragment-{{children.id}}-{{child.key}}" valign="top">
+                        <th width="25%">{{child.key}}</th>
+                        <th>{% if(child.type) %}
+                            {{child.type}}
+                            <br/>
+
+                            <em>{% for configuration in child.configuration %}
+                                {{configuration.key}}="{{configuration.value}}"<br/>
+                            {% endfor %}</em>
+                            {% else %}
+                                Unknown Type
+                                <br/><em>Usually injected into the site by listeners</em>
+                            {% endif %}
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3"><strong><a href="#">Data Structure [+]</a></strong>
+<pre>
+{{child.debug}}
+</pre>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+<ul class="depth-primary">
+    {% for primary in nav.children(node, 2) %}
+        <li{% if nav.active(primary) %} class="active"{% endif %}>
+            <a href="{{ nav.url(primary) }}">
+                {{ primary.label }}
+            </a>
+            {% if nav.active(primary) %}
+                <ul class="depth-secondary">
+                    {% for secondary in nav.children(primary) %}
+                    <li{% if nav.active(secondary) %} class="active"{% endif %}>
+                        <a href="{{ nav.url(secondary) }}">
+                            {{ secondary.label }}
+                        </a>
+                        {% if nav.active(secondary) %}
+                            <ul class="depth-teriary">
+                                {% for tertiary in nav.children(secondary) %}
+                                <li{% if nav.active(tertiary) %} class="active"{% endif %}>
+                                    <a href="{{ nav.url(tertiary) }}">
+                                        {{ tertiary.label }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

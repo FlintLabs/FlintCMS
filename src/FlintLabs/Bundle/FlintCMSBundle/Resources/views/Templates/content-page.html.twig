@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>{{title}}</h1>
+        <nav>
+            {% include 'FlintLabsFlintCMSBundle:Navigation:primary-navigation.html.twig' %}
+        </nav>
+    </header>
+    <article>
+        {% pureregion 0 %}
+        <aside>
+            <nav>
+                {% include 'FlintLabsFlintCMSBundle:Navigation:secondary-navigation.html.twig' %}
+            </nav>
+        </aside>
+    </article>
+{% endblock %}

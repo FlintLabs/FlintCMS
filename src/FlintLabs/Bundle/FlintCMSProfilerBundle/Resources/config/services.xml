@@ -1,0 +1,24 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="flint_cms_profiler.data_collector.dispatcher.class">FlintLabs\Bundle\FlintCMSProfilerBundle\DataCollector\DispatcherDataCollector</parameter>
+    </parameters>
+
+    <services>
+        <service id="flint_cms_profiler.data_collector.dispatcher" class="%flint_cms_profiler.data_collector.dispatcher.class%" public="false">
+            <tag name="data_collector" template="FlintLabsFlintCMSProfilerBundle:DataCollector:dispatcher" id="flint_cms_dispatcher" />
+            <argument type="service" id="flint_cms.dispatcher" />
+			<argument type="service" id="flint_cms.template_mapping" />
+			<argument type="service" id="flint_cms.format_converter" />
+			<argument type="service" id="templating" />
+			<call method="setTemplateFile">
+				<argument>%flint_cms.template.file%</argument>
+			</call>
+			<call method="setFragmentFile">
+				<argument>%flint_cms.fragment.file%</argument>
+			</call>
+        </service>
+    </services>
+</container>

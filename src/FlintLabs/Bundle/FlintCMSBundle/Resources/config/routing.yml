@@ -1,0 +1,14 @@
+
+
+
+dispatch_node:
+  pattern: /node/{nodeId}
+  defaults: { _controller: flint_cms.controller.default:nodeAction }
+  requirements:
+    nodeId: \d+
+
+dispatch_url:
+  pattern: /{url}
+  defaults: { _controller: flint_cms.controller.default:indexAction }
+  requirements:
+    url: .*
