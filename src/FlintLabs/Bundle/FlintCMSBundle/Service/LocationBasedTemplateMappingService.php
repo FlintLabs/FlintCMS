@@ -32,7 +32,7 @@ class LocationBasedTemplateMappingService implements TemplateMappingServiceInter
         // Setup a prioritisation path mechanism
         $this->templatePrefixes = array();
         $this->fragmentPrefixes = array();
-        for($x = -10; $x <= 0; $x++) {
+        for ($x = -10; $x <= 0; $x++) {
             $this->templatePrefixes[$x] = array();
             $this->fragmentPrefixes[$x] = array();
         }
@@ -63,21 +63,21 @@ class LocationBasedTemplateMappingService implements TemplateMappingServiceInter
 
             // Set the template path priorities based on information configured in the template file
             $prefixMatches = $this->templateConfig->xpath('//fallback-prefixes/prefix');
-            if(!empty($prefixMatches)) {
-                foreach($prefixMatches as $prefixMatch) {
+            if (!empty($prefixMatches)) {
+                foreach ($prefixMatches as $prefixMatch) {
                     // Obtain the prefix
                     $prefix = $prefixMatch->xpath('@value');
-                    if(!empty($prefix)) {
+                    if (!empty($prefix)) {
                         $prefix = (string)current($prefix);
                         
                         // Obtain the type
                         $type = $prefixMatch->xpath('@type');
-                        if(!empty($type)) $type = (string)current($type);
+                        if (!empty($type)) $type = (string)current($type);
                         else $type = null;
 
                         // Obtain a priority
                         $priority = $prefixMatch->xpath('@prefix');
-                        if(!empty($priority)) $priority = (string)current($priority);
+                        if (!empty($priority)) $priority = (string)current($priority);
                         else $priority = -5;
 
                         // Assign as required
@@ -108,12 +108,12 @@ class LocationBasedTemplateMappingService implements TemplateMappingServiceInter
      * @return void
      */
     public function addTemplatePrefix($prefix, $priority = -5) {
-        if(!preg_match('/:$/', $prefix) || preg_match('/[:]{2}/', $prefix)) {
+        if (!preg_match('/:$/', $prefix) || preg_match('/[:]{2}/', $prefix)) {
             throw new Exception('Please ensure template paths are in correct format, containing two ":" and finishing with a trailing :');
         }
         $priority = intval($priority);
-        if($priority < -10) $priority = -10;
-        else if($priority > 0) $priority = 0;
+        if ($priority < -10) $priority = -10;
+        else if ($priority > 0) $priority = 0;
         $this->templatePrefixes[$priority][] = $prefix;
     }
 
@@ -124,12 +124,12 @@ class LocationBasedTemplateMappingService implements TemplateMappingServiceInter
      * @return void
      */
     public function addFragmentPrefix($prefix, $priority = -5) {
-        if(!preg_match('/:$/', $prefix) || preg_match('/[:]{2}/', $prefix)) {
+        if (!preg_match('/:$/', $prefix) || preg_match('/[:]{2}/', $prefix)) {
             throw new Exception('Please ensure template paths are in correct format, containing two ":" and finishing with a trailing :');
         }
         $priority = intval($priority);
-        if($priority < -10) $priority = -10;
-        else if($priority > 0) $priority = 0;
+        if ($priority < -10) $priority = -10;
+        else if ($priority > 0) $priority = 0;
         $this->fragmentPrefixes[$priority][] = $prefix;
     }
 
@@ -178,8 +178,8 @@ class LocationBasedTemplateMappingService implements TemplateMappingServiceInter
         $file = $typeAsHyphenated . $this->suffix;
         // Locate the possible locations for this file
         $templates = array();
-        for($x = -10; $x <= 0; $x++) {
-            foreach($this->fragmentPrefixes[$x] as $prefix) {
+        for ($x = -10; $x <= 0; $x++) {
+            foreach ($this->fragmentPrefixes[$x] as $prefix) {
                 $name = $prefix . $file;
                 $templates[] = $name;
             }
@@ -195,15 +195,15 @@ class LocationBasedTemplateMappingService implements TemplateMappingServiceInter
     protected function processTemplate($templateFile)
     {
         // Check if we need a suffix
-        if(!preg_match('/\./', $templateFile)) $templateFile .= $this->suffix;
+        if (!preg_match('/\./', $templateFile)) $templateFile .= $this->suffix;
 
         // If we have presence of ':' we are assuming an exact location
-        if(preg_match('/:/', $templateFile)) return $templateFile;
+        if (preg_match('/:/', $templateFile)) return $templateFile;
 
         // Locate the possible locations for this template
         $templates = array();
-        for($x = -10; $x <= 0; $x++) {
-            foreach($this->templatePrefixes[$x] as $prefix) {
+        for ($x = -10; $x <= 0; $x++) {
+            foreach ($this->templatePrefixes[$x] as $prefix) {
                 $name = $prefix . $templateFile;
                 // Does this template exist?
                 $templates[] = $name;
