@@ -171,8 +171,8 @@ class NodeTreeQueryService implements NodeTreeQueryServiceInterface
 //            $node = $repository->findOneById($node);
 //        }
 //        $path = $repository->getPath($node);
-//        foreach($path as $element) {
-//            if($element->getFragment()->isHidden()) return true;
+//        foreach ($path as $element) {
+//            if ($element->getFragment()->isHidden()) return true;
 //        }
         return false;
     }

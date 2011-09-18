@@ -116,12 +116,12 @@ class BaseExtension extends \Twig_Extension
 
     public function getImageSrc($value, $options = array())
     {
-        if(!empty($value->file)) {
+        if (!empty($value->file)) {
             $value = (string)$value;
         }
-        if(!empty($options)) {
+        if (!empty($options)) {
             $value = 'image-resizer.php?src=' . urlencode($value);
-            foreach($options as $key => $val) {
+            foreach ($options as $key => $val) {
                 $value .= '&' . $key . '=' . $val;
             }
         } else {
@@ -154,17 +154,17 @@ class BaseExtension extends \Twig_Extension
     {
         // Check we can use this function (must have context to the node element)
         $node = !empty($context['node']) ? $context['node'] : null;
-        if(empty($node)) throw new \Exception('Variable "node" missing from context. Node must be present in view data to use this function. If using "only" ensure to pass with {"node":node} when using pureregion');
+        if (empty($node)) throw new \Exception('Variable "node" missing from context. Node must be present in view data to use this function. If using "only" ensure to pass with {"node":node} when using pureregion');
 
         // Get the fragment
         $fragment = $node->getFragment();
         $children = $fragment->getContainedChildrenRegionFragments();
-        if(empty($children[$region]) || !is_array($children[$region])) return;
+        if (empty($children[$region]) || !is_array($children[$region])) return;
         foreach ($children[$region] as $sortOrder => $childFragment) {
             $templateFile = $this->templateMapping->getTemplateForFragment($childFragment);
-            if(is_array($templateFile)) {
+            if (is_array($templateFile)) {
                 $loaded = false;
-                foreach($templateFile as $templateFilePossibility) {
+                foreach ($templateFile as $templateFilePossibility) {
                     try {
                         $template = $env->loadTemplate($templateFilePossibility);
                         $template->display(array_merge($context, array('region' => $region, 'fragment' => $childFragment), $childFragment->getViewData()));
@@ -174,7 +174,7 @@ class BaseExtension extends \Twig_Extension
                         // Keep trying
                     }
                 }
-                if(!$loaded) {
+                if (!$loaded) {
                     $this->log->warn('Could not locate the template file for ' . $childFragment->getType() . '. Tried looking at: ' . implode(',', $templateFile));
                 }
             } else {

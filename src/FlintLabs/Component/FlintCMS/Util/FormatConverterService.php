@@ -56,15 +56,15 @@ class FormatConverterService implements FormatConverterServiceInterface
 
         // Deal with spaces etc
         $string = preg_replace('/[\s_\-]+/', '-', $string);
-        if(substr($string, 0, 1) == '-') $string = substr($string, 1);
+        if (substr($string, 0, 1) == '-') $string = substr($string, 1);
         $string = trim($string);
 
         // Make parts
         $made = '';
 		$parts = preg_split('/-/', (string)$string);
 		$first = true;
-		foreach($parts as $part) {
-			if($first == true) {
+		foreach ($parts as $part) {
+			if ($first == true) {
 				$made .= ($ucFirst == true) ? ucfirst($part) : $part;
 				$first = false;
 			} else {
@@ -88,7 +88,7 @@ class FormatConverterService implements FormatConverterServiceInterface
         $string = preg_replace('/[\s_\-]+/', '_', $string);
 
         // Keep
-        if(substr($string, 0, 1) == '_') $string = substr($string, 1);
+        if (substr($string, 0, 1) == '_') $string = substr($string, 1);
         return trim($string);
     }
 
@@ -106,7 +106,7 @@ class FormatConverterService implements FormatConverterServiceInterface
         $string = preg_replace('/[\s_\-]+/', '-', $string);
 
         // Keep clean
-        if(substr($string, 0, 1) == '-') $string = substr($string, 1);
+        if (substr($string, 0, 1) == '-') $string = substr($string, 1);
         return trim($string);
     }
 }

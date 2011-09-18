@@ -50,7 +50,7 @@ class RedirectFragmentListener implements FragmentDispatchListenerInterface
         // Obtain the link type match
         $xml = new \SimpleXMLElement($data);
         $linkTypeMatches  = $xml->xpath('/data/link/type');
-        if(empty($linkTypeMatches)) return;
+        if (empty($linkTypeMatches)) return;
         $linkType = (string)current($linkTypeMatches);
 
         switch ($linkType) {
@@ -65,7 +65,7 @@ class RedirectFragmentListener implements FragmentDispatchListenerInterface
             case 'node':
                 $nodeId = (string)current($xml->xpath('/data/link/node'));
                 $url = $this->router->findURLById($nodeId);
-                if(($url)) {
+                if (($url)) {
                     // Can't locate this URL
                     throw new ResponseException(new Response(404));
                 }
