@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\EventListener;
-use \FlintLabs\Bundle\FlintCMSBundle\Entity\Node,
+namespace FlintLabs\Component\FlintCMS\Dispatcher\Event;
+use FlintLabs\Component\FlintCMS\Entity\Node,
 Symfony\Component\EventDispatcher\Event;
 
 /**

@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Service;
-use FlintLabs\Bundle\FlintCMSBundle\Service\NodeTreeQueryServiceInterface,
+namespace FlintLabs\Component\FlintCMS\Routing;
+use FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface,
 Doctrine\ORM\EntityManager;
 
 /**
@@ -70,7 +70,7 @@ class NodeTreeQueryService implements NodeTreeQueryServiceInterface
 
         // Get the node ID
         $nodeId = $node;
-        if ($node instanceof \FlintLabs\Bundle\FlintCMSBundle\Entity\Node) {
+        if ($node instanceof \FlintLabs\Component\FlintCMS\Entity\Node) {
             $nodeId = $node->getId();
         }
 
@@ -131,7 +131,7 @@ class NodeTreeQueryService implements NodeTreeQueryServiceInterface
 
         // Get the node id
         $nodeId = $node;
-        if ($node instanceof \FlintLabs\Bundle\FlintCMSBundle\Entity\Node) {
+        if ($node instanceof \FlintLabs\Component\FlintCMS\Entity\Node) {
             $nodeId = $node->getId();
         }
 
@@ -166,8 +166,8 @@ class NodeTreeQueryService implements NodeTreeQueryServiceInterface
      */
     public function isHiddenForUser($node)
     {
-//        $repository = $this->entityManager->getRepository('FlintLabs\Bundle\FlintCMSBundle\Entity\Node');
-//        if (!($node instanceof \FlintLabs\Bundle\FlintCMSBundle\Entity\Node)) {
+//        $repository = $this->entityManager->getRepository('FlintLabs\Component\FlintCMS\Entity\Node');
+//        if (!($node instanceof \FlintLabs\Component\FlintCMS\Entity\Node)) {
 //            $node = $repository->findOneById($node);
 //        }
 //        $path = $repository->getPath($node);

@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\EventListener;
-use \FlintLabs\Bundle\FlintCMSBundle\EventListener\NodeEvent;
+namespace FlintLabs\Component\FlintCMS\Dispatcher;
+use FlintLabs\Component\FlintCMS\Dispatcher\Event\NodeEvent;
 
 /**
  * On encountering nodes

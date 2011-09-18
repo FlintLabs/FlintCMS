@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\EventListener;
+namespace FlintLabs\Component\FlintCMS\Dispatcher;
 /**
  * 
  * @author camm (camm@flintinteractive.com.au)

@@ -4,7 +4,7 @@
  * Date: 29/08/11
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Service;
+namespace FlintLabs\Component\FlintCMS\Template;
 use FlintLabs\Component\FlintCMS\Entity\Fragment;
 
 /**

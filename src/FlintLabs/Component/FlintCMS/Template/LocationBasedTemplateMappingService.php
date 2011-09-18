@@ -3,9 +3,9 @@
  * Copyright Cameron Manderson (c) 2011 All rights reserved.
  * Date: 10/09/11
  */
-namespace FlintLabs\Component\FlintCMS\Templating;
+namespace FlintLabs\Component\FlintCMS\Template;
 use FlintLabs\Component\FlintCMS\Entity\Fragment,
-FlintLabs\Bundle\FlintCMSBundle\Service\FormatConverterServiceInterface,
+FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface,
 Symfony\Component\Templating\EngineInterface;
 /**
  *

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Service;
+namespace FlintLabs\Component\FlintCMS\Routing;
 /**
  * An interface for identifing the correct page from the URL
  * @author camm (camm@flintinteractive.com.au)
