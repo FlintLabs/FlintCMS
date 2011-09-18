@@ -16,7 +16,7 @@
         <!-- Service Implementations -->
         <parameter key="flint_cms.dispatcher.class">FlintLabs\Bundle\FlintCMSBundle\Service\DispatcherService</parameter>
         <parameter key="flint_cms.format_converter.class">FlintLabs\Bundle\FlintCMSBundle\Service\FormatConverterService</parameter>
-        <parameter key="flint_cms.node_router.class">FlintLabs\Bundle\FlintCMSBundle\Service\NodeRouterService</parameter>
+        <parameter key="flint_cms.node_router.class">FlintLabs\Component\FlintCMS\Routing\NodeRouterService</parameter>
         <parameter key="flint_cms.node_tree_query.class">FlintLabs\Bundle\FlintCMSBundle\Service\NodeTreeQueryService</parameter>
 		<parameter key="flint_cms.template_mapping.class">FlintLabs\Bundle\FlintCMSBundle\Service\LocationBasedTemplateMappingService</parameter>
 

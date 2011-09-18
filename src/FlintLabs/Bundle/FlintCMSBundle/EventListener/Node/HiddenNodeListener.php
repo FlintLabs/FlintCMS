@@ -9,11 +9,11 @@
  */
 
 namespace FlintLabs\Bundle\FlintCMSBundle\EventListener\Node;
-use FlintLabs\Bundle\FlintCMSBundle\EventListener\NodeDispatchListenerInterface,
-FlintLabs\Bundle\FlintCMSBundle\EventListener\NodeDispatchEvent,
+use FlintLabs\Component\FlintCMS\Dispatcher\NodeDispatchListenerInterface,
+FlintLabs\Component\FlintCMS\Dispatcher\Event\NodeDispatchEvent,
 FlintLabs\Bundle\FlintCMSBundle\Exception\ResponseException,
 Symfony\Component\HttpFoundation\Response,
-\FlintLabs\Bundle\FlintCMSBundle\Service\NodeTreeQueryService;
+FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryService;
 
 /**
  * Handles a dispatch event with a hidden node

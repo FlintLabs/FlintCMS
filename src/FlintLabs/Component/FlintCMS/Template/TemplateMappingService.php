@@ -4,7 +4,7 @@
  * Date: 29/08/11
  */
 namespace FlintLabs\Bundle\FlintCMSBundle\Service;
-use FlintLabs\Bundle\FlintCMSBundle\Entity\Fragment,
+use FlintLabs\Component\FlintCMS\Entity\Fragment,
 FlintLabs\Bundle\FlintCMSBundle\Service\FormatConverterServiceInterface;
 /**
  * Handles mapping fragments to templates

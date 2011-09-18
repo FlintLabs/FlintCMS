@@ -17,6 +17,11 @@ class Fragment implements ViewModelContainerInterface
 {
     protected $id;
     protected $type;
+
+    /**
+     * @var
+     * @ORM:Column(type='object')
+     */
     protected $data;
 
     protected $viewData;

@@ -5,7 +5,7 @@
  */
 
 namespace FlintLabs\Bundle\FlintCMSBundle\Service;
-use FlintLabs\Bundle\FlintCMSBundle\Entity\Fragment;
+use FlintLabs\Component\FlintCMS\Entity\Fragment;
 
 /**
  * Handles mapping fragments to views to be rendered

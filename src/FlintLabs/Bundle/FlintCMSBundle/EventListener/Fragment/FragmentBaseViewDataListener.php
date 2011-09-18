@@ -9,9 +9,9 @@
  */
 
 namespace FlintLabs\Bundle\FlintCMSBundle\EventListener\Fragment;
-use FlintLabs\Bundle\FlintCMSBundle\Service\FormatConverterServiceInterface,
-FlintLabs\Bundle\FlintCMSBundle\EventListener\FragmentDispatchListenerInterface,
-FlintLabs\Bundle\FlintCMSBundle\EventListener\FragmentDispatchEvent;
+use FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface,
+FlintLabs\Component\FlintCMS\Dispatcher\FragmentDispatchListenerInterface,
+FlintLabs\Component\FlintCMS\Dispatcher\Event\FragmentDispatchEvent;
 
 /**
  * Populates the base view data for the fragment, handling conversion from
@@ -40,7 +40,7 @@ class FragmentBaseViewDataListener implements FragmentDispatchListenerInterface
     {
         // Get the XML stored in the database
         $fragment = $fragmentDispatchEvent->getFragment();
-        if(!($fragment instanceof \FlintLabs\Bundle\FlintCMSBundle\Entity\ViewModelContainerInterface)) {
+        if(!($fragment instanceof \FlintLabs\Component\FlintCMS\Entity\ViewModelContainerInterface)) {
             throw new Exception('Encountered a fragment that does not implement the view model container interface');
         }
 
