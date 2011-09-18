@@ -9,11 +9,11 @@
  */
 
 namespace FlintLabs\Bundle\FlintCMSBundle\Controller;
-use \FlintLabs\Bundle\FlintCMSBundle\Service\DispatcherServiceInterface,
-FlintLabs\Bundle\FlintCMSBundle\Service\TemplateMappingServiceInterface,
-FlintLabs\Bundle\FlintCMSBundle\Service\NodeRouterServiceInterface,
+use FlintLabs\Component\FlintCMS\Dispatcher\DispatcherServiceInterface,
+FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface,
+FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface,
 FlintLabs\Bundle\FlintCMSBundle\Exception\ResponseException,
-FlintLabs\Bundle\FlintCMSBundle\EventListener\UrlDispatchEvent,
+FlintLabs\Component\FlintCMS\Dispatcher\UrlDispatchEvent,
 Symfony\Component\HttpKernel\Exception\HttpException,
 Symfony\Component\HttpKernel\Log\LoggerInterface,
 Symfony\Component\Templating\EngineInterface,
@@ -61,7 +61,7 @@ class DefaultController
     private $log;
 
     /**
-     * @param \FlintLabs\Bundle\FlintCMSBundle\Service\NodeRouterServiceInterface $router
+     * @param \FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface $router
      * @param \FlintLabs\Bundle\FlintCMSBundle\Service\DispatcherServiceInterface $dispatcher
      * @param \FlintLabs\Bundle\FlintCMSBundle\Service\TemplateMappingServiceInterface $templateMapping
      * @param \Symfony\Component\Templating\EngineInterface $templateEngine

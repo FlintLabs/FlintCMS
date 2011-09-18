@@ -9,10 +9,10 @@
  */
 
 namespace FlintLabs\Bundle\FlintCMSBundle\EventListener\Fragment;
-use FlintLabs\Bundle\FlintCMSBundle\EventListener\FragmentDispatchListenerInterface,
-FlintLabs\Bundle\FlintCMSBundle\EventListener\FragmentDispatchEvent,
+use FlintLabs\Component\FlintCMS\Dispatcher\FragmentDispatchListenerInterface,
+FlintLabs\Component\FlintCMS\Dispatcher\Event\FragmentDispatchEvent,
 FlintLabs\Bundle\FlintCMSBundle\Exception\ResponseException,
-\FlintLabs\Bundle\FlintCMSBundle\Service\NodeRouterServiceInterface,
+FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface,
 Symfony\Component\HttpFoundation\RedirectResponse,
 Symfony\Component\HttpKernel\Log\LoggerInterface,
 Symfony\Component\HttpFoundation\Response;
