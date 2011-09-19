@@ -10,8 +10,8 @@
 
 namespace FlintCMS\Component\Routing;
 use FlintCMS\Component\Routing\NodeRouterServiceInterface,
-FlintCMS\Component\Entity\UrlMapLookup,
-FlintCMS\Component\Entity\Node,
+FlintCMS\Bundle\AdminBundle\Entity\UrlMapLookup,
+FlintCMS\Bundle\AdminBundle\Entity\Node,
 Doctrine\ORM\EntityManager;
 
 /**
@@ -47,7 +47,7 @@ class NodeRouterService implements NodeRouterServiceInterface
     {
 
         if (substr($url, 0, 1) == '/') $url = substr($url, 1);
-        $match = $this->entityManager->getRepository('FlintCMS\Component\Entity\UrlMapLookup')->findOneByUrl($url);
+        $match = $this->entityManager->getRepository('FlintCMS\Bundle\AdminBundle\Entity\UrlMapLookup')->findOneByUrl($url);
         if (!empty($match))
             return $match->getNode()->getId();
     }
@@ -59,7 +59,7 @@ class NodeRouterService implements NodeRouterServiceInterface
     public function findURLById($nodeId)
     {
 
-        if ($nodeId instanceof FlintCMS\Component\Entity\Node) {
+        if ($nodeId instanceof FlintCMS\Bundle\AdminBundle\Entity\Node) {
             $nodeId = $nodeId->getId();
         }
 
@@ -70,7 +70,7 @@ class NodeRouterService implements NodeRouterServiceInterface
         }
 
         // Revert back to url map
-        $match = $this->entityManager->getRepository('FlintCMS\Component\Entity\UrlMapLookup')->findOneByNode($nodeId);
+        $match = $this->entityManager->getRepository('FlintCMS\Bundle\AdminBundle\Entity\UrlMapLookup')->findOneByNode($nodeId);
         if (!empty($match))
             return $match->getUrl();
     }

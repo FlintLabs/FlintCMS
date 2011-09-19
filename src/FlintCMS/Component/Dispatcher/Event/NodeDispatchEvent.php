@@ -9,7 +9,7 @@
  */
 
 namespace FlintCMS\Component\Dispatcher\Event;
-use FlintCMS\Component\Entity\Node,
+use FlintCMS\Bundle\AdminBundle\Entity\Node,
 Symfony\Component\EventDispatcher\Event;
 
 /**

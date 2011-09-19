@@ -4,7 +4,7 @@
  * Date: 29/08/11
  */
 namespace FlintCMS\Component\Template;
-use FlintCMS\Component\Entity\Fragment,
+use FlintCMS\Bundle\AdminBundle\Entity\Fragment,
 FlintCMS\Component\Util\FormatConverterServiceInterface;
 /**
  * Handles mapping fragments to templates

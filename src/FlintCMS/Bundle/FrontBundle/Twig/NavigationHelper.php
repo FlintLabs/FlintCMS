@@ -129,7 +129,7 @@ class NavigationHelper implements NavigationHelperInterface
     private function getNodeId($node)
     {
         $nodeId = $node;
-        if ($node instanceof \FlintCMS\Component\Entity\Node) {
+        if ($node instanceof \FlintCMS\Bundle\AdminBundle\Entity\Node) {
             $nodeId = $node->getId();
         } else if (is_array($node) && !empty($node['id'])) {
             $nodeId = $node['id'];

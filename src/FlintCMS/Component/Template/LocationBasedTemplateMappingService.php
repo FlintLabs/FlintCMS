@@ -4,7 +4,7 @@
  * Date: 10/09/11
  */
 namespace FlintCMS\Component\Template;
-use FlintCMS\Component\Entity\Fragment,
+use FlintCMS\Bundle\AdminBundle\Entity\Fragment,
 FlintCMS\Component\Util\FormatConverterServiceInterface,
 Symfony\Component\Templating\EngineInterface;
 /**

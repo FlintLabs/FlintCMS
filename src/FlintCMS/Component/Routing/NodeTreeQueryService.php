@@ -70,7 +70,7 @@ class NodeTreeQueryService implements NodeTreeQueryServiceInterface
 
         // Get the node ID
         $nodeId = $node;
-        if ($node instanceof \FlintCMS\Component\Entity\Node) {
+        if ($node instanceof \FlintCMS\Bundle\AdminBundle\Entity\Node) {
             $nodeId = $node->getId();
         }
 
@@ -131,7 +131,7 @@ class NodeTreeQueryService implements NodeTreeQueryServiceInterface
 
         // Get the node id
         $nodeId = $node;
-        if ($node instanceof \FlintCMS\Component\Entity\Node) {
+        if ($node instanceof \FlintCMS\Bundle\AdminBundle\Entity\Node) {
             $nodeId = $node->getId();
         }
 
@@ -166,8 +166,8 @@ class NodeTreeQueryService implements NodeTreeQueryServiceInterface
      */
     public function isHiddenForUser($node)
     {
-        //        $repository = $this->entityManager->getRepository('FlintCMS\Component\Entity\Node');
-        //        if (!($node instanceof \FlintCMS\Component\Entity\Node)) {
+        //        $repository = $this->entityManager->getRepository('FlintCMS\Bundle\AdminBundle\Entity\Node');
+        //        if (!($node instanceof \FlintCMS\Bundle\AdminBundle\Entity\Node)) {
         //            $node = $repository->findOneById($node);
         //        }
         //        $path = $repository->getPath($node);

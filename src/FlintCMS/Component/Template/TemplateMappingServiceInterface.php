@@ -5,7 +5,7 @@
  */
 
 namespace FlintCMS\Component\Template;
-use FlintCMS\Component\Entity\Fragment;
+use FlintCMS\Bundle\AdminBundle\Entity\Fragment;
 
 /**
  * Handles mapping fragments to views to be rendered

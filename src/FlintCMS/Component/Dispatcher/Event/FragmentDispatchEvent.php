@@ -9,7 +9,7 @@
  */
 
 namespace FlintCMS\Component\Dispatcher\Event;
-use FlintCMS\Component\Entity\Fragment,
+use FlintCMS\Bundle\AdminBundle\Entity\Fragment,
 Symfony\Component\EventDispatcher\Event;
 
 /**
@@ -20,12 +20,12 @@ class FragmentDispatchEvent extends Event
 {
     /**
      * $the fragment entity
-     * @var \FlintCMS\Component\Entity\Fragment
+     * @var \FlintCMS\Bundle\AdminBundle\Entity\Fragment
      */
     private $fragment;
 
     /**
-     * @param \FlintCMS\Component\Entity\Fragment $fragment
+     * @param \FlintCMS\Bundle\AdminBundle\Entity\Fragment $fragment
      */
     public function __construct(Fragment $fragment)
     {
@@ -33,7 +33,7 @@ class FragmentDispatchEvent extends Event
     }
 
     /**
-     * @return \FlintCMS\Component\Entity\Fragment
+     * @return \FlintCMS\Bundle\AdminBundle\Entity\Fragment
      */
     public function getFragment()
     {

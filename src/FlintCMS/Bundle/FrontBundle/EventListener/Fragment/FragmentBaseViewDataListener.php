@@ -40,7 +40,7 @@ class FragmentBaseViewDataListener implements FragmentDispatchListenerInterface
     {
         // Get the XML stored in the database
         $fragment = $fragmentDispatchEvent->getFragment();
-        if (!($fragment instanceof \FlintCMS\Component\Entity\ViewModelContainerInterface)) {
+        if (!($fragment instanceof \FlintCMS\Bundle\AdminBundle\Entity\ViewModelContainerInterface)) {
             throw new Exception('Encountered a fragment that does not implement the view model container interface');
         }
 

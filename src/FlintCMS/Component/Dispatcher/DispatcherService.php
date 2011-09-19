@@ -41,7 +41,7 @@ class DispatcherService implements DispatcherServiceInterface
     private $log;
 
     /**
-     * @var FlintCMS\Component\Entity\Node
+     * @var FlintCMS\Bundle\AdminBundle\Entity\Node
      */
     private $node;
 
@@ -69,7 +69,7 @@ class DispatcherService implements DispatcherServiceInterface
             if (empty($nodeId)) throw new HttpException(404);
 
             // Get the entity manager for FragmentData
-            $this->node = $this->entityManager->getRepository('FlintCMS\Component\Entity\Node')->findOneById($nodeId);
+            $this->node = $this->entityManager->getRepository('FlintCMS\Bundle\AdminBundle\Entity\Node')->findOneById($nodeId);
             if (empty($this->node)) throw new HttpException(404);
 
             // Create the dispatch event for encountering a node (allowing behaviour to be invoked for specific nodes)
@@ -79,7 +79,7 @@ class DispatcherService implements DispatcherServiceInterface
             $this->eventDispatcher->dispatch('fragmentDispatch', new FragmentDispatchEvent($fragment = $this->node->getFragment()));
 
             // Obtain the children
-            $fragmentRepository = $this->entityManager->getRepository('FlintCMS\Component\Entity\Fragment');
+            $fragmentRepository = $this->entityManager->getRepository('FlintCMS\Bundle\AdminBundle\Entity\Fragment');
             $fragmentRepository->loadRegionFragments($fragment);
 
             // For any children fragment, create dispatch events for those fragments
