@@ -7,26 +7,50 @@
  * For full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace FlintCMS\Component\Entity;
+namespace FlintCMS\Bundle\AdminBundle\Entity;
 
 /**
+ * 
  *
+ * @Entity(repositoryClass="FlintCMS\Bundle\AdminBundle\Entity\Repository\FragmentRepository")
+ * @Table(name="fragment")
  * @author camm (camm@flintinteractive.com.au)
  */
 class Fragment implements ViewModelContainerInterface
 {
+    /**
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue(strategy="AUTO")
+     * @var int
+     */
     protected $id;
+
+    /**
+     * @Column
+     * @var string
+     */
     protected $type;
 
     /**
-     * @var
      * @ORM:Column(type='object')
+     * @var string
      */
     protected $data;
 
+    /**
+     * @var array
+     */
     protected $viewData;
 
+    /**
+     * @var ArrayCollection
+     */
     protected $children;
+
+    /**
+     * @var 
+     */
     protected $parent;
     protected $region;
     protected $sortOrder;
