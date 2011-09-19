@@ -12,7 +12,7 @@ namespace FlintLabs\Component\FlintCMS\Dispatcher;
 use FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface,
 FlintLabs\Component\FlintCMS\Dispatcher\Event\FragmentDispatchEvent,
 FlintLabs\Component\FlintCMS\Dispatcher\Event\NodeDispatchEvent,
-FlintLabs\Bundle\FlintCMSBundle\Exception\ResponseException,
+FlintCMS\Bundle\FrontBundle\Exception\ResponseException,
 Symfony\Component\EventDispatcher\EventDispatcherInterface,
 Symfony\Component\HttpKernel\Exception\HttpException,
 Symfony\Component\HttpKernel\Log\LoggerInterface,

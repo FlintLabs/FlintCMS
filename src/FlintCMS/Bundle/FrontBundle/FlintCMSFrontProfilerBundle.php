@@ -7,11 +7,11 @@
  * For full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace FlintLabs\Bundle\FlintCMSBundle;
+namespace FlintCMS\Bundle\FrontendBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class FlintLabsFlintCMSBundle extends Bundle
+class FlintCMSFrontProfilerBundle extends Bundle
 {
 
 }

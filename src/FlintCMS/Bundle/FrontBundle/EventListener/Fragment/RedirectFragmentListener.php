@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\EventListener\Fragment;
+namespace FlintCMS\Bundle\FrontBundle\EventListener\Fragment;
 use FlintLabs\Component\FlintCMS\Dispatcher\FragmentDispatchListenerInterface,
 FlintLabs\Component\FlintCMS\Dispatcher\Event\FragmentDispatchEvent,
-FlintLabs\Bundle\FlintCMSBundle\Exception\ResponseException,
+FlintCMS\Bundle\FrontBundle\Exception\ResponseException,
 FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface,
 Symfony\Component\HttpFoundation\RedirectResponse,
 Symfony\Component\HttpKernel\Log\LoggerInterface,

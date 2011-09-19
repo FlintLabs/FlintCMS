@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Twig;
+namespace FlintCMS\Bundle\FrontBundle\Twig;
 use FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface,
 FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface;
 /**

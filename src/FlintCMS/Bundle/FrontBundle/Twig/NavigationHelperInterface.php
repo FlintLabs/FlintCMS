@@ -7,7 +7,7 @@
  * For full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace FlintLabs\Bundle\FlintCMSBundle\Twig;
+namespace FlintCMS\Bundle\FrontBundle\Twig;
 /**
  * A Helper interface for working with URL and Node Tree Navigation
  * @author camm (camm@flintinteractive.com.au)

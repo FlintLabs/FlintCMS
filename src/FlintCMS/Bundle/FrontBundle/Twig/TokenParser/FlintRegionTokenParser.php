@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Twig\TokenParser;
+namespace FlintCMS\Bundle\FrontBundle\Twig\TokenParser;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)
@@ -42,7 +42,7 @@ class FlintRegionTokenParser extends \Twig_TokenParser
 
         $this->parser->getStream()->expect(\Twig_Token::BLOCK_END_TYPE);
 
-        return new \FlintLabs\Bundle\FlintCMSBundle\Twig\Node\FlintRegionNode($expr, $variables, $only, $token->getLine(), $this->getTag());
+        return new \FlintCMS\Bundle\FrontBundle\Twig\Node\FlintRegionNode($expr, $variables, $only, $token->getLine(), $this->getTag());
     }
 
     /**

@@ -11,7 +11,7 @@
 		<parameter key="flint_cms.fragment.file">../app/Resources/config/fragment-model.xml</parameter>
 
         <!-- Controllers -->
-        <parameter key="flint_cms.controller.default.class">FlintLabs\Bundle\FlintCMSBundle\Controller\DefaultController</parameter>
+        <parameter key="flint_cms.controller.default.class">FlintCMS\Bundle\FrontBundle\Controller\DefaultController</parameter>
 
         <!-- Service Implementations -->
         <parameter key="flint_cms.dispatcher.class">FlintLabs\Component\FlintCMS\Dispatcher\DispatcherService</parameter>
@@ -21,18 +21,18 @@
 		<parameter key="flint_cms.template_mapping.class">FlintLabs\Component\FlintCMS\Template\LocationBasedTemplateMappingService</parameter>
 
         <!-- Flint Pure Default Listeners -->
-        <parameter key="flint_cms.listeners.default.node.hidden.class">FlintLabs\Bundle\FlintCMSBundle\EventListener\Node\HiddenNodeListener</parameter>
-        <parameter key="flint_cms.listeners.default.fragment.data.class">FlintLabs\Bundle\FlintCMSBundle\EventListener\Fragment\FragmentBaseViewDataListener</parameter>
-        <parameter key="flint_cms.listeners.default.fragment.redirect.class">FlintLabs\Bundle\FlintCMSBundle\EventListener\Fragment\RedirectFragmentListener</parameter>
+        <parameter key="flint_cms.listeners.default.node.hidden.class">FlintCMS\Bundle\FrontBundle\EventListener\Node\HiddenNodeListener</parameter>
+        <parameter key="flint_cms.listeners.default.fragment.data.class">FlintCMS\Bundle\FrontBundle\EventListener\Fragment\FragmentBaseViewDataListener</parameter>
+        <parameter key="flint_cms.listeners.default.fragment.redirect.class">FlintCMS\Bundle\FrontBundle\EventListener\Fragment\RedirectFragmentListener</parameter>
 
         <!-- Doctrine Extension Listener -->
         <parameter key="flint_cms.tree.listener.class">Gedmo\Tree\TreeListener</parameter>
 
         <!-- Twig Extensions -->
-        <parameter key="flint_cms.twig.base.extension.class">FlintLabs\Bundle\FlintCMSBundle\Twig\Extension\BaseExtension</parameter>
+        <parameter key="flint_cms.twig.base.extension.class">FlintCMS\Bundle\FrontBundle\Twig\Extension\BaseExtension</parameter>
 
         <!-- Twig Helper -->
-        <parameter key="flint_cms.twig.nav.helper.class">FlintLabs\Bundle\FlintCMSBundle\Twig\NavigationHelper</parameter>
+        <parameter key="flint_cms.twig.nav.helper.class">FlintCMS\Bundle\FrontBundle\Twig\NavigationHelper</parameter>
     </parameters>
 
     <services>

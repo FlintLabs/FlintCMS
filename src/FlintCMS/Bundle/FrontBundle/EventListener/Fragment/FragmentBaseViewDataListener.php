@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\EventListener\Fragment;
+namespace FlintCMS\Bundle\FrontBundle\EventListener\Fragment;
 use FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface,
 FlintLabs\Component\FlintCMS\Dispatcher\FragmentDispatchListenerInterface,
 FlintLabs\Component\FlintCMS\Dispatcher\Event\FragmentDispatchEvent;

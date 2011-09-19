@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Controller;
+namespace FlintCMS\Bundle\FrontBundle\Controller;
 use FlintLabs\Component\FlintCMS\Dispatcher\DispatcherServiceInterface,
 FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface,
 FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface,
-FlintLabs\Bundle\FlintCMSBundle\Exception\ResponseException,
+FlintCMS\Bundle\FrontBundle\Exception\ResponseException,
 FlintLabs\Component\FlintCMS\Dispatcher\Event\UrlDispatchEvent,
 Symfony\Component\HttpKernel\Exception\HttpException,
 Symfony\Component\HttpKernel\Log\LoggerInterface,

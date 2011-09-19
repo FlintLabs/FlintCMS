@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Twig\Node;
+namespace FlintCMS\Bundle\FrontBundle\Twig\Node;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)

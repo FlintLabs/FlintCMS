@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Exception;
-use FlintLabs\Bundle\FlintCMSBundle\Exception\ResponseException,
+namespace FlintCMS\Bundle\FrontBundle\Exception;
+use FlintCMS\Bundle\FrontBundle\Exception\ResponseException,
 Symfony\Component\HttpFoundation\Response;
 
 /**

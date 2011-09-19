@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\EventListener\Node;
+namespace FlintCMS\Bundle\FrontBundle\EventListener\Node;
 use FlintLabs\Component\FlintCMS\Dispatcher\NodeDispatchListenerInterface,
 FlintLabs\Component\FlintCMS\Dispatcher\Event\NodeDispatchEvent,
-FlintLabs\Bundle\FlintCMSBundle\Exception\ResponseException,
+FlintCMS\Bundle\FrontBundle\Exception\ResponseException,
 Symfony\Component\HttpFoundation\Response,
 FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryService;
 

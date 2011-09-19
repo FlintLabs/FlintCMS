@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSBundle\Twig\Extension;
-use FlintLabs\Bundle\FlintCMSBundle\Twig\TokenParser\FlintRegionTokenParser,
+namespace FlintCMS\Bundle\FrontBundle\Twig\Extension;
+use FlintCMS\Bundle\FrontBundle\Twig\TokenParser\FlintRegionTokenParser,
 FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface,
 FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface,
-FlintLabs\Bundle\FlintCMSBundle\Twig\NavigationHelperInterface,
+FlintCMS\Bundle\FrontBundle\Twig\NavigationHelperInterface,
 Symfony\Component\HttpKernel\Log\LoggerInterface;
 /**
  * Base Extensions for twig rendering
@@ -29,17 +29,17 @@ class BaseExtension extends \Twig_Extension
     private $name = 'pure';
 
     /**
-     * @var \FlintLabs\Bundle\FlintCMSBundle\Twig\Extension\TemplateMappingServiceInterface
+     * @var \FlintCMS\Bundle\FrontBundle\Twig\Extension\TemplateMappingServiceInterface
      */
     private $templateMapping;
 
     /**
-     * @var \FlintLabs\Bundle\FlintCMSBundle\Twig\NavigationHelperInterface
+     * @var \FlintCMS\Bundle\FrontBundle\Twig\NavigationHelperInterface
      */
     private $navigationHelper;
 
     /**
-     * @var \FlintLabs\Bundle\FlintCMSBundle\Twig\Extension\FormatConverterServiceInterface
+     * @var \FlintCMS\Bundle\FrontBundle\Twig\Extension\FormatConverterServiceInterface
      */
     private $formatConverter;
 
@@ -47,7 +47,7 @@ class BaseExtension extends \Twig_Extension
 
     /**
      * @param \FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface $templateMapping
-     * @param \FlintLabs\Bundle\FlintCMSBundle\Twig\NavigationHelperInterface $navigationHelper
+     * @param \FlintCMS\Bundle\FrontBundle\Twig\NavigationHelperInterface $navigationHelper
      * @param \FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface $formatConverter
      */
     public function __construct(NavigationHelperInterface $navigationHelper,
