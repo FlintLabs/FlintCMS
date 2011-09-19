@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintCMS\Bundle\FrontendBundle\DependencyInjection;
+namespace FlintCMS\Bundle\FrontBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -36,6 +36,6 @@ class FlintLabsFlintCMSExtension extends Extension
 
     public function getAlias()
     {
-        return 'flint_labs_flint_cms';
+        return 'flint_cms_front';
     }
 }

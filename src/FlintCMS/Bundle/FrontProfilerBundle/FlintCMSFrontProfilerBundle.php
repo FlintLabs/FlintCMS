@@ -12,6 +12,6 @@ namespace FlintLabs\Bundle\FlintCMSProfilerBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class FlintLabsFlintCMSProfilerBundle extends Bundle
+class FlintCMSFrontProfilerBundle extends Bundle
 {
 }
