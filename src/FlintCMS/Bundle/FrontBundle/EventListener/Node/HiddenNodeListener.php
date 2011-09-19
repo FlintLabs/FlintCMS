@@ -36,7 +36,7 @@ class HiddenNodeListener implements NodeDispatchListenerInterface
     public function onNodeDispatch(NodeDispatchEvent $nodeDispatchEvent)
     {
         // Quick match
-        if($this->nodeTreeQuery->isHiddenForUser($nodeDispatchEvent->getNode())){
+        if ($this->nodeTreeQuery->isHiddenForUser($nodeDispatchEvent->getNode())) {
             throw new ResponseException(new Response(404));
         }
     }

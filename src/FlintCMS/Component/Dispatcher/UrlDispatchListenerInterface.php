@@ -10,10 +10,11 @@
 
 namespace FlintLabs\Component\FlintCMS\Dispatcher;
 /**
- * 
+ *
  * @author camm (camm@flintinteractive.com.au)
  */
-interface UrlDispatchListenerInterface {
+interface UrlDispatchListenerInterface
+{
 
     /**
      * Listen to the urlDispatch event and craft a response.

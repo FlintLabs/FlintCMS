@@ -13,7 +13,7 @@ namespace FlintCMS\Bundle\AdminBundle;
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-class FragmentController 
+class FragmentController
 {
     /**
      * @Route('/admin/fragment/{fragmentTypeAlias}/create')
@@ -23,6 +23,6 @@ class FragmentController
     public function createAction($fragmentTypeAlias)
     {
         // Build the form to modify the specific type
-        
+
     }
 }

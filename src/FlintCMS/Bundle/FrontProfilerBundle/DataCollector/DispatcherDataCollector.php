@@ -83,10 +83,10 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
     function collect(Request $request, Response $response, \Exception $exception = null)
     {
         $collections = array();
-        if(method_exists($this->dispatcher, 'getNode')) {
+        if (method_exists($this->dispatcher, 'getNode')) {
             // Obtain the node that was dispatched
             $node = $this->dispatcher->getNode();
-            if(!empty($node)) {
+            if (!empty($node)) {
                 /*
                  * NODE INFORMATION
                  */
@@ -97,7 +97,7 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
 
                 // Template
                 $nodeFragment = $node->getFragment();
-                if(!empty($nodeFragment)) {
+                if (!empty($nodeFragment)) {
 
                     /*
                      * NODE FRAGMENT INFORMATION
@@ -111,10 +111,11 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
                     $nodeAttachedFragmentCollection['viewDataStructure'] = $this->getFragmentDataStructure($nodeFragment);
 
                     $templateLocation = $this->templateMapping->getTemplateForFragment($nodeFragment);
-                    $nodeAttachedFragmentCollection['searchedPaths'] = is_array($templateLocation) ? implode(', ', $templateLocation) : $templateLocation;
-                    if(is_array($templateLocation) && !empty($this->engine)) {
-                        foreach($templateLocation as $templateLocationFile) {
-                            if($this->engine->exists($templateLocationFile)) {
+                    $nodeAttachedFragmentCollection['searchedPaths'] = is_array($templateLocation)
+                            ? implode(', ', $templateLocation) : $templateLocation;
+                    if (is_array($templateLocation) && !empty($this->engine)) {
+                        foreach ($templateLocation as $templateLocationFile) {
+                            if ($this->engine->exists($templateLocationFile)) {
                                 $nodeAttachedFragmentCollection['used'] = $templateLocationFile;
                                 break;
                             }
@@ -127,19 +128,19 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
                      */
                     $fragmentDataXML = new \SimpleXMLElement($nodeFragment->getData());
                     $templateMatches = $fragmentDataXML->xpath('//template');
-                    if(!empty($templateMatches)) {
+                    if (!empty($templateMatches)) {
                         $template = array();
                         $template['key'] = (string)current($templateMatches);
 
                         /*
                          * TEMPLATE FILE CONFIGURATION
                          */
-                        if(!empty($this->templateFile)) {
+                        if (!empty($this->templateFile)) {
                             try {
                                 $templateFileXML = new \SimpleXMLElement(file_get_contents($this->templateFile));
                                 $template['config'] = $this->templateFile;
                                 $templateXML = $templateFileXML->xpath('//template[@key="' . $template['key'] . '"]');
-                                if(!empty($templateXML)) {
+                                if (!empty($templateXML)) {
                                     // Template Information
                                     $templateXML = current($templateXML);
                                     $template['title'] = $this->simpleQuery($templateXML, 'title');
@@ -150,8 +151,8 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
 
                                     // Regions
                                     $template['regions'] = array();
-                                    if(!empty($regionMatches)) {
-                                        foreach($regionMatches as $regionMatch) {
+                                    if (!empty($regionMatches)) {
+                                        foreach ($regionMatches as $regionMatch) {
                                             $region = array();
                                             $region['key'] = $this->simpleQuery($regionMatch, '@key');
                                             $region['id'] = $this->simpleQuery($regionMatch, '@id');
@@ -161,7 +162,7 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
                                     }
 
                                 }
-                            } catch(Exception $e) {
+                            } catch (Exception $e) {
                                 $template['config'] = 'Unable to parse ' . $this->templateFile;
                             }
                         }
@@ -174,8 +175,8 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
                      */
                     $childrenFragments = array();
                     $regionFragments = $nodeFragment->getContainedChildrenRegionFragments();
-                    foreach($regionFragments as $region => $fragments) {
-                        foreach($fragments as $fragment) {
+                    foreach ($regionFragments as $region => $fragments) {
+                        foreach ($fragments as $fragment) {
                             $childFragmentOverview = array(
                                 'region' => $region,
                                 'type' => $fragment->getType(),
@@ -187,10 +188,11 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
 
                             // Get information about the template search paths
                             $templateLocation = $this->templateMapping->getTemplateForFragment($fragment);
-                            $childFragmentOverview['searchedPaths'] = is_array($templateLocation) ? implode(', ', $templateLocation) : $templateLocation;
-                            if(is_array($templateLocation) && !empty($this->engine)) {
-                                foreach($templateLocation as $templateLocationFile) {
-                                    if($this->engine->exists($templateLocationFile)) {
+                            $childFragmentOverview['searchedPaths'] = is_array($templateLocation)
+                                    ? implode(', ', $templateLocation) : $templateLocation;
+                            if (is_array($templateLocation) && !empty($this->engine)) {
+                                foreach ($templateLocation as $templateLocationFile) {
+                                    if ($this->engine->exists($templateLocationFile)) {
                                         $childFragmentOverview['used'] = $templateLocationFile;
                                         break;
                                     }
@@ -227,9 +229,9 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
     public function getCollectionCount()
     {
         $count = 0;
-        if(!empty($this->data['collections']['node'])) $count++;
-        if(!empty($this->data['collections']['nodeAttachedFragment'])) $count++;
-        foreach($this->data['collections']['children'] as $child) $count++;
+        if (!empty($this->data['collections']['node'])) $count++;
+        if (!empty($this->data['collections']['nodeAttachedFragment'])) $count++;
+        foreach ($this->data['collections']['children'] as $child) $count++;
         return $count;
     }
 
@@ -241,9 +243,9 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
 
     private function simpleQuery($xml, $query)
     {
-        if(empty($xml)) return;
+        if (empty($xml)) return;
         $results = $xml->xpath($query);
-        if(!empty($results)) {
+        if (!empty($results)) {
             return (string)current($results);
         }
     }
@@ -251,8 +253,8 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
     private function debug($object)
     {
         $dump = 'Unable to debug unless xdebug is running';
-        if(function_exists('xdebug_call_class')) {
-            ini_set('xdebug.var_display_max_children', 3 );
+        if (function_exists('xdebug_call_class')) {
+            ini_set('xdebug.var_display_max_children', 3);
             ob_start();
             xdebug_var_dump($object);
             $dump = ob_get_clean();
@@ -262,12 +264,12 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
 
     private function getFragmentModel()
     {
-        if(empty($this->fragmentFile)) return;
-        if(!empty($this->fragmentModel)) return $this->fragmentModel;
+        if (empty($this->fragmentFile)) return;
+        if (!empty($this->fragmentModel)) return $this->fragmentModel;
 
         try {
             $this->fragmentModel = new \SimpleXMLElement(file_get_contents($this->fragmentFile));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return null;
         }
 
@@ -281,9 +283,9 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
         $fragmentType = $fragment->getType();
         $type = array();
         // Get information about the fragment
-        if(!empty($fragmentModel)) {
+        if (!empty($fragmentModel)) {
             $typeDefinitionMatch = $fragmentModel->xpath('//type-definition[@key="' . ($fragmentType) . '"]');
-            if(!empty($typeDefinitionMatch)) {
+            if (!empty($typeDefinitionMatch)) {
                 $typeDefinitionMatch = current($typeDefinitionMatch);
                 $type = array();
                 $type['title'] = $this->simpleQuery($typeDefinitionMatch, 'title');
@@ -300,25 +302,25 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
 
         $fragmentDataStructure = array();
 
-        if(!empty($fragmentModel)) {
+        if (!empty($fragmentModel)) {
             // Get information about the view elements
             $typeMatch = $fragmentModel->xpath('//type[@key="' . ($fragmentType) . '"]');
-            if(!empty($typeMatch)) $typeMatch = current($typeMatch);
+            if (!empty($typeMatch)) $typeMatch = current($typeMatch);
         }
-        
+
         $fragmentDataStructure = array();
         $viewData = $fragment->getViewData();
-        if(!empty($viewData)) {
-            foreach($viewData as $viewDataKey => $viewDataVal) {
+        if (!empty($viewData)) {
+            foreach ($viewData as $viewDataKey => $viewDataVal) {
                 $struct = array();
                 $struct['key'] = $viewDataKey;
                 $struct['debug'] = $this->debug($viewDataVal);
 
                 // Search for information about the view key in the fragment model (see if it is CMS managed)
-                if(!empty($fragmentModel)) {
+                if (!empty($fragmentModel)) {
                     // Is CMS Managed?
                     $attributeMatch = $fragmentModel->xpath('//attribute-definition[@key="' . $this->formatConverter->getHyphenSeparated($viewDataKey) . '"]');
-                    if(!empty($attributeMatch)) {
+                    if (!empty($attributeMatch)) {
                         // Look up any configuration for this parameter
                         $attributeMatch = current($attributeMatch);
                         $struct['title'] = $this->simpleQuery($attributeMatch, 'title');
@@ -327,8 +329,8 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
                         $struct['assetTypeReference'] = $this->simpleQuery($attributeMatch, '@asset-type-reference');
                         $struct['configuration'] = array();
                         $configurationMatches = $attributeMatch->xpath('configuration/set-property');
-                        if(!empty($configurationMatches)) {
-                            foreach($configurationMatches as $configurationMatch) {
+                        if (!empty($configurationMatches)) {
+                            foreach ($configurationMatches as $configurationMatch) {
                                 $configurationProperty = array();
                                 $configurationProperty['key'] = $this->simpleQuery($configurationMatch, '@key');
                                 $configurationProperty['value'] = $this->simpleQuery($configurationMatch, '@value');
@@ -337,9 +339,9 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
                         }
 
                         // Look for any specific params for this type (mandatory)
-                        if(!empty($typeMatch)) {
+                        if (!empty($typeMatch)) {
                             $attributeMatch = $typeMatch->xpath('attribute-group/attribute[key="' . $this->formatConverter->getHyphenSeparated($viewDataKey) . '"]');
-                            if(!empty($attributeMatch)) {
+                            if (!empty($attributeMatch)) {
                                 $attributeMatch = current($attributeMatch);
                                 $struct['mandatory'] = $this->simpleQuery($attributeMatch, '@mandatory');
                             }

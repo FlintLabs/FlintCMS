@@ -45,8 +45,8 @@ class NodeRouterService implements NodeRouterServiceInterface
      */
     public function findIdByUrl($url)
     {
-        
-        if(substr($url, 0, 1) == '/') $url = substr($url, 1);
+
+        if (substr($url, 0, 1) == '/') $url = substr($url, 1);
         $match = $this->entityManager->getRepository('FlintLabs\Component\FlintCMS\Entity\UrlMapLookup')->findOneByUrl($url);
         if (!empty($match))
             return $match->getNode()->getId();
@@ -58,14 +58,14 @@ class NodeRouterService implements NodeRouterServiceInterface
      */
     public function findURLById($nodeId)
     {
-        
+
         if ($nodeId instanceof FlintLabs\Component\FlintCMS\Entity\Node) {
             $nodeId = $nodeId->getId();
         }
 
         // Construct if we can find quickly
         $path = $this->nodeTreeQuery->getMaterialisedPath($nodeId);
-        if(!empty($path)) {
+        if (!empty($path)) {
             return $this->generateUrl($path);
         }
 

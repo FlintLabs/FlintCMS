@@ -97,10 +97,10 @@ class DefaultController
         } catch (ResponseException $e) {
             return $e->getResponse();
         }
-        
+
         // Look for a response in the event
         $response = $urlDispatchEvent->getResponse();
-        if(!empty($response)) {
+        if (!empty($response)) {
             return $response;
         } else {
             // If no listener has provided a response, forward
@@ -137,24 +137,24 @@ class DefaultController
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      * @param $template
      * @param $response
-     * @return 
+     * @return
      */
     protected function renderResponse($template, $response)
     {
-        if(is_array($template)) {
+        if (is_array($template)) {
             // Multiple locations of possible templates configured
             $loaded = false;
-            foreach($template as $templateFile) {
-                if($this->templateEngine->exists($templateFile)) {
+            foreach ($template as $templateFile) {
+                if ($this->templateEngine->exists($templateFile)) {
                     return $this->templateEngine->renderResponse($templateFile, $response);
                 }
             }
-            if(!$loaded) {
+            if (!$loaded) {
                 $this->log->err('Unable to locate the template for this node trying at ' . implode(', ', $template));
                 throw new HttpException(404, 'Template not found');
             }
         }
-        if(!$this->templateEngine->exists($template)) {
+        if (!$this->templateEngine->exists($template)) {
             $this->log->err('Unable to locate the template for this node trying at ' . $template);
             throw new HttpException(404, 'Template not found');
         }

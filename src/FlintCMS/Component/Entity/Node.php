@@ -13,7 +13,7 @@ namespace FlintLabs\Component\FlintCMS\Entity;
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-class Node 
+class Node
 {
     protected $id;
     protected $fragment;

@@ -21,6 +21,6 @@ class FragmentRepository extends EntityRepository
      */
     public function loadRegionFragments($fragment)
     {
-        
+
     }
 }

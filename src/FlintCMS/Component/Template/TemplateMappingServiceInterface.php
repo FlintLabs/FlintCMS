@@ -11,7 +11,8 @@ use FlintLabs\Component\FlintCMS\Entity\Fragment;
  * Handles mapping fragments to views to be rendered
  * @author camm (camm@flintinteractive.com.au)
  */
-interface TemplateMappingServiceInterface {
+interface TemplateMappingServiceInterface
+{
     /**
      * Returns with the corresponding view for the fragment
      * @abstract

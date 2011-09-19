@@ -24,7 +24,7 @@ class FlintRegionNode extends \Twig_Node implements \Twig_NodeOutputInterface
      */
     public function __construct(\Twig_Node_Expression $expr, \Twig_Node_Expression $variables = null, $only = false, $lineno, $tag = null)
     {
-        parent::__construct(array('expr' => $expr, 'variables' => $variables), array('only' => (Boolean) $only), $lineno, $tag);
+        parent::__construct(array('expr' => $expr, 'variables' => $variables), array('only' => (Boolean)$only), $lineno, $tag);
     }
 
     /**
@@ -36,22 +36,20 @@ class FlintRegionNode extends \Twig_Node implements \Twig_NodeOutputInterface
         $compiler->addDebugInfo($this);
 
         $compiler
-            ->write("\$region = ")
-            ->subcompile($this->getNode('expr'))
-            ->raw(";\n")
-            ->write("echo \$this->env->getExtension('pure')->renderRegion(")
-            ->raw('$this->env, $region, ')
-        ;
+                ->write("\$region = ")
+                ->subcompile($this->getNode('expr'))
+                ->raw(";\n")
+                ->write("echo \$this->env->getExtension('pure')->renderRegion(")
+                ->raw('$this->env, $region, ');
 
         if (false === $this->getAttribute('only')) {
             if (null === $this->getNode('variables')) {
                 $compiler->raw('$context');
             } else {
                 $compiler
-                    ->raw('array_merge($context, ')
-                    ->subcompile($this->getNode('variables'))
-                    ->raw(')')
-                ;
+                        ->raw('array_merge($context, ')
+                        ->subcompile($this->getNode('variables'))
+                        ->raw(')');
             }
         } else {
             if (null === $this->getNode('variables')) {

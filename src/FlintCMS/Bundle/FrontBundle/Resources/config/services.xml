@@ -1,119 +1,134 @@
 <?xml version="1.0" ?>
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+		   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
+	<parameters>
 
-        <!-- File References -->
-        <parameter key="flint_cms.tree.file">../app/Resources/config/tree.xml</parameter>
-        <parameter key="flint_cms.template.file">../app/Resources/config/templates.xml</parameter>
+		<!-- File References -->
+		<parameter key="flint_cms.tree.file">../app/Resources/config/tree.xml</parameter>
+		<parameter key="flint_cms.template.file">../app/Resources/config/templates.xml</parameter>
 		<parameter key="flint_cms.fragment.file">../app/Resources/config/fragment-model.xml</parameter>
 
-        <!-- Controllers -->
-        <parameter key="flint_cms.controller.default.class">FlintCMS\Bundle\FrontBundle\Controller\DefaultController</parameter>
+		<!-- Controllers -->
+		<parameter key="flint_cms.controller.default.class">FlintCMS\Bundle\FrontBundle\Controller\DefaultController
+		</parameter>
 
-        <!-- Service Implementations -->
-        <parameter key="flint_cms.dispatcher.class">FlintLabs\Component\FlintCMS\Dispatcher\DispatcherService</parameter>
-        <parameter key="flint_cms.format_converter.class">FlintLabs\Component\FlintCMS\Util\FormatConverterService</parameter>
-        <parameter key="flint_cms.node_router.class">FlintLabs\Component\FlintCMS\Routing\NodeRouterService</parameter>
-        <parameter key="flint_cms.node_tree_query.class">FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryService</parameter>
-		<parameter key="flint_cms.template_mapping.class">FlintLabs\Component\FlintCMS\Template\LocationBasedTemplateMappingService</parameter>
+		<!-- Service Implementations -->
+		<parameter key="flint_cms.dispatcher.class">FlintLabs\Component\FlintCMS\Dispatcher\DispatcherService
+		</parameter>
+		<parameter key="flint_cms.format_converter.class">FlintLabs\Component\FlintCMS\Util\FormatConverterService
+		</parameter>
+		<parameter key="flint_cms.node_router.class">FlintLabs\Component\FlintCMS\Routing\NodeRouterService</parameter>
+		<parameter key="flint_cms.node_tree_query.class">FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryService
+		</parameter>
+		<parameter key="flint_cms.template_mapping.class">
+			FlintLabs\Component\FlintCMS\Template\LocationBasedTemplateMappingService
+		</parameter>
 
-        <!-- Flint Pure Default Listeners -->
-        <parameter key="flint_cms.listeners.default.node.hidden.class">FlintCMS\Bundle\FrontBundle\EventListener\Node\HiddenNodeListener</parameter>
-        <parameter key="flint_cms.listeners.default.fragment.data.class">FlintCMS\Bundle\FrontBundle\EventListener\Fragment\FragmentBaseViewDataListener</parameter>
-        <parameter key="flint_cms.listeners.default.fragment.redirect.class">FlintCMS\Bundle\FrontBundle\EventListener\Fragment\RedirectFragmentListener</parameter>
+		<!-- Flint Pure Default Listeners -->
+		<parameter key="flint_cms.listeners.default.node.hidden.class">
+			FlintCMS\Bundle\FrontBundle\EventListener\Node\HiddenNodeListener
+		</parameter>
+		<parameter key="flint_cms.listeners.default.fragment.data.class">
+			FlintCMS\Bundle\FrontBundle\EventListener\Fragment\FragmentBaseViewDataListener
+		</parameter>
+		<parameter key="flint_cms.listeners.default.fragment.redirect.class">
+			FlintCMS\Bundle\FrontBundle\EventListener\Fragment\RedirectFragmentListener
+		</parameter>
 
-        <!-- Doctrine Extension Listener -->
-        <parameter key="flint_cms.tree.listener.class">Gedmo\Tree\TreeListener</parameter>
+		<!-- Doctrine Extension Listener -->
+		<parameter key="flint_cms.tree.listener.class">Gedmo\Tree\TreeListener</parameter>
 
-        <!-- Twig Extensions -->
-        <parameter key="flint_cms.twig.base.extension.class">FlintCMS\Bundle\FrontBundle\Twig\Extension\BaseExtension</parameter>
+		<!-- Twig Extensions -->
+		<parameter key="flint_cms.twig.base.extension.class">FlintCMS\Bundle\FrontBundle\Twig\Extension\BaseExtension
+		</parameter>
 
-        <!-- Twig Helper -->
-        <parameter key="flint_cms.twig.nav.helper.class">FlintCMS\Bundle\FrontBundle\Twig\NavigationHelper</parameter>
-    </parameters>
+		<!-- Twig Helper -->
+		<parameter key="flint_cms.twig.nav.helper.class">FlintCMS\Bundle\FrontBundle\Twig\NavigationHelper</parameter>
+	</parameters>
 
-    <services>
+	<services>
 
-        <!-- Twig Extension -->
-        <service id="flint_cms.twig.base.extension" class="%flint_cms.twig.base.extension.class%">
-            <tag name="twig.extension"/>
-            <argument type="service" id="flint_cms.twig.nav.helper" />
-            <argument type="service" id="flint_cms.format_converter" />
-			<argument type="service" id="logger" />
+		<!-- Twig Extension -->
+		<service id="flint_cms.twig.base.extension" class="%flint_cms.twig.base.extension.class%">
+			<tag name="twig.extension"/>
+			<argument type="service" id="flint_cms.twig.nav.helper"/>
+			<argument type="service" id="flint_cms.format_converter"/>
+			<argument type="service" id="logger"/>
 			<call method="setTemplateMapping">
-				<argument type="service" id="flint_cms.template_mapping" />
+				<argument type="service" id="flint_cms.template_mapping"/>
 			</call>
-        </service>
+		</service>
 
-        <!-- Twig Helpers -->
-        <service id="flint_cms.twig.nav.helper" class="%flint_cms.twig.nav.helper.class%">
-            <argument type="service" id="flint_cms.node_router" />
-            <argument type="service" id="flint_cms.node_tree_query" />
-        </service>
+		<!-- Twig Helpers -->
+		<service id="flint_cms.twig.nav.helper" class="%flint_cms.twig.nav.helper.class%">
+			<argument type="service" id="flint_cms.node_router"/>
+			<argument type="service" id="flint_cms.node_tree_query"/>
+		</service>
 
-        <!-- Flint Pure Listener: Hidden Node -->
-        <service id="flint_cms.listeners.default.node.hidden" class="%flint_cms.listeners.default.node.hidden.class%">
-            <tag name="kernel.event_listener" event="nodeDispatch" />
-            <argument type="service" id="flint_cms.node_tree_query" />
-        </service>
+		<!-- Flint Pure Listener: Hidden Node -->
+		<service id="flint_cms.listeners.default.node.hidden" class="%flint_cms.listeners.default.node.hidden.class%">
+			<tag name="kernel.event_listener" event="nodeDispatch"/>
+			<argument type="service" id="flint_cms.node_tree_query"/>
+		</service>
 
-        <!-- Flint Pure Listener: Redirect Fragment -->
-        <service id="flint_cms.listeners.default.fragment.data" class="%flint_cms.listeners.default.fragment.data.class%">
-            <tag name="kernel.event_listener" event="fragmentDispatch" />
-            <argument type="service" id="flint_cms.format_converter" />
-        </service>
-        <service id="flint_cms.listeners.default.fragment.redirect" class="%flint_cms.listeners.default.fragment.redirect.class%">
-            <tag name="kernel.event_listener" event="fragmentDispatch" />
-            <argument type="service" id="flint_cms.node_router" />
-            <argument type="service" id="logger" />
-        </service>
+		<!-- Flint Pure Listener: Redirect Fragment -->
+		<service id="flint_cms.listeners.default.fragment.data"
+				 class="%flint_cms.listeners.default.fragment.data.class%">
+			<tag name="kernel.event_listener" event="fragmentDispatch"/>
+			<argument type="service" id="flint_cms.format_converter"/>
+		</service>
+		<service id="flint_cms.listeners.default.fragment.redirect"
+				 class="%flint_cms.listeners.default.fragment.redirect.class%">
+			<tag name="kernel.event_listener" event="fragmentDispatch"/>
+			<argument type="service" id="flint_cms.node_router"/>
+			<argument type="service" id="logger"/>
+		</service>
 
-        <!-- Doctrine Extension Listener: Tree  -->
-        <service id="flint_cms.tree.listener" class="%flint_cms.tree.listener.class%">
-            <tag name="doctrine.event_subscriber" connection="default"/>
-        </service>
+		<!-- Doctrine Extension Listener: Tree  -->
+		<service id="flint_cms.tree.listener" class="%flint_cms.tree.listener.class%">
+			<tag name="doctrine.event_subscriber" connection="default"/>
+		</service>
 
-        <!-- Base Controller -->
-        <service id="flint_cms.controller.default" class="%flint_cms.controller.default.class%">
-            <argument type="service" id="flint_cms.node_router" />
-            <argument type="service" id="flint_cms.dispatcher" />
-            <argument type="service" id="flint_cms.template_mapping" />
-			<argument type="service" id="templating" />
-			<argument type="service" id="event_dispatcher" />
-			<argument type="service" id="logger" />
-        </service>
+		<!-- Base Controller -->
+		<service id="flint_cms.controller.default" class="%flint_cms.controller.default.class%">
+			<argument type="service" id="flint_cms.node_router"/>
+			<argument type="service" id="flint_cms.dispatcher"/>
+			<argument type="service" id="flint_cms.template_mapping"/>
+			<argument type="service" id="templating"/>
+			<argument type="service" id="event_dispatcher"/>
+			<argument type="service" id="logger"/>
+		</service>
 
-        <!-- Dispatcher Service -->
-        <service id="flint_cms.dispatcher" class="%flint_cms.dispatcher.class%">
-            <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="event_dispatcher" />
-            <argument type="service" id="logger" />
-        </service>
+		<!-- Dispatcher Service -->
+		<service id="flint_cms.dispatcher" class="%flint_cms.dispatcher.class%">
+			<argument type="service" id="doctrine.orm.entity_manager"/>
+			<argument type="service" id="event_dispatcher"/>
+			<argument type="service" id="logger"/>
+		</service>
 
-        <!-- Format Converter Service -->
-        <service id="flint_cms.format_converter" class="%flint_cms.format_converter.class%"/>
+		<!-- Format Converter Service -->
+		<service id="flint_cms.format_converter" class="%flint_cms.format_converter.class%"/>
 
-        <!-- Router Service-->
-        <service id="flint_cms.node_router" class="%flint_cms.node_router.class%">
-            <argument type="service" id="flint_cms.node_tree_query" />
-            <argument type="service" id="doctrine.orm.entity_manager" />
-        </service>
+		<!-- Router Service-->
+		<service id="flint_cms.node_router" class="%flint_cms.node_router.class%">
+			<argument type="service" id="flint_cms.node_tree_query"/>
+			<argument type="service" id="doctrine.orm.entity_manager"/>
+		</service>
 
-        <!-- Tree Query Service -->
-        <service id="flint_cms.node_tree_query" class="%flint_cms.node_tree_query.class%">
-            <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument>%flint_cms.tree.file%</argument>
-        </service>
+		<!-- Tree Query Service -->
+		<service id="flint_cms.node_tree_query" class="%flint_cms.node_tree_query.class%">
+			<argument type="service" id="doctrine.orm.entity_manager"/>
+			<argument>%flint_cms.tree.file%</argument>
+		</service>
 
-        <!-- Template Mapping Service -->
+		<!-- Template Mapping Service -->
 		<service id="flint_cms.template_mapping" class="%flint_cms.template_mapping.class%">
-            <argument>%flint_cms.template.file%</argument>
-            <argument type="service" id="flint_cms.format_converter" />
-        </service>
+			<argument>%flint_cms.template.file%</argument>
+			<argument type="service" id="flint_cms.format_converter"/>
+		</service>
 
-    </services>
+	</services>
 
 </container>

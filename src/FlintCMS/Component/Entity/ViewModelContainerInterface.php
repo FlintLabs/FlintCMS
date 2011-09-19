@@ -13,7 +13,8 @@ namespace FlintLabs\Component\FlintCMS\Entity;
  * Fragments have extended and dynamic properties for the view layer
  * @author camm (camm@flintinteractive.com.au)
  */
-interface ViewModelContainerInterface {
+interface ViewModelContainerInterface
+{
     /**
      * Sets the view data array for this fragment
      * @abstract

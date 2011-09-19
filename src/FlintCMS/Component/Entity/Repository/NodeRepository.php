@@ -15,5 +15,5 @@ namespace FlintLabs\Component\FlintCMS\Entity\Repository;
  */
 class NodeRepository extends EntityRepository
 {
-    
+
 }

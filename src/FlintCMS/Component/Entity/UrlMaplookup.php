@@ -13,7 +13,7 @@ namespace FlintLabs\Component\FlintCMS\Entity;
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-class UrlMaplookup 
+class UrlMaplookup
 {
     protected $id;
     protected $node;

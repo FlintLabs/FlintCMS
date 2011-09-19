@@ -13,7 +13,7 @@ namespace FlintCMS\Bundle\AdminBundle;
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-class PanelController 
+class PanelController
 {
-    
+
 }

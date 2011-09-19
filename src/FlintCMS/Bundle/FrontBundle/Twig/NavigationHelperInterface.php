@@ -12,7 +12,8 @@ namespace FlintCMS\Bundle\FrontBundle\Twig;
  * A Helper interface for working with URL and Node Tree Navigation
  * @author camm (camm@flintinteractive.com.au)
  */
-interface NavigationHelperInterface {
+interface NavigationHelperInterface
+{
 
     /**
      * Obtains the URL for the current node

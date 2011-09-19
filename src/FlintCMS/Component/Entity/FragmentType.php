@@ -8,7 +8,8 @@
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-interface FragmentType {
+interface FragmentType
+{
 
     /**
      * Returns with an alias for this fragment type

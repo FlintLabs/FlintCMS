@@ -40,7 +40,7 @@ class FragmentBaseViewDataListener implements FragmentDispatchListenerInterface
     {
         // Get the XML stored in the database
         $fragment = $fragmentDispatchEvent->getFragment();
-        if(!($fragment instanceof \FlintLabs\Component\FlintCMS\Entity\ViewModelContainerInterface)) {
+        if (!($fragment instanceof \FlintLabs\Component\FlintCMS\Entity\ViewModelContainerInterface)) {
             throw new Exception('Encountered a fragment that does not implement the view model container interface');
         }
 
@@ -48,12 +48,13 @@ class FragmentBaseViewDataListener implements FragmentDispatchListenerInterface
         $xmlToArray = $this->fixArrayKeys($this->formatConverter->getArrayFromXML($fragment->getData()));
 
         // Place into the view layer
-        foreach($xmlToArray as $key => $value) {
+        foreach ($xmlToArray as $key => $value) {
             $fragment->addViewData($key, $value);
         }
     }
 
-    public function fixArrayKeys($input) {
+    public function fixArrayKeys($input)
+    {
         if (!is_array($input)) return $input;
         $output = array();
         foreach ($input as $key => $value) {

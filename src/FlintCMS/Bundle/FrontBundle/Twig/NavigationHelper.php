@@ -21,7 +21,7 @@ class NavigationHelper implements NavigationHelperInterface
      * @var \FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface
      */
     private $nodeRouter;
-    
+
     /**
      * @var \FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface
      */
@@ -59,8 +59,8 @@ class NavigationHelper implements NavigationHelperInterface
         $path = $this->nodeTreeQuery->getMaterialisedPath($nodeId);
 
         // Compare on the path for the nodeId
-        foreach($path as $item) {
-            if($nodeId == key($item)) {
+        foreach ($path as $item) {
+            if ($nodeId == key($item)) {
                 return true; // Found on path
             }
         }
@@ -74,16 +74,16 @@ class NavigationHelper implements NavigationHelperInterface
      */
     public function getChildren($node, $depth = null)
     {
-        if(!empty($depth)) {
+        if (!empty($depth)) {
             $path = $this->getPath($this->getNodeId($node));
-            if($depth > count($path)) return array();
-            $level = array_slice($path, $depth-1, 1);
+            if ($depth > count($path)) return array();
+            $level = array_slice($path, $depth - 1, 1);
             $node = $this->getNodeId(current($level));
         }
 
         $returnVal = array();
         $children = $this->nodeTreeQuery->getChildren($this->getNodeId($node));
-        if(!empty($children)) foreach($children as $element) {
+        if (!empty($children)) foreach ($children as $element) {
             $returnVal[] = array('id' => key($element), 'label' => current($element));
         }
         return $returnVal;
@@ -97,7 +97,7 @@ class NavigationHelper implements NavigationHelperInterface
     public function getParent($node)
     {
         $parent = $this->nodeTreeQuery->getParent($this->getNodeId($node));
-        if(empty($parent)) return; // no parent?
+        if (empty($parent)) return; // no parent?
 
         // Compose the array in a more meaningful frontend manor
         $returnVal = array();
@@ -115,7 +115,7 @@ class NavigationHelper implements NavigationHelperInterface
     {
         $returnVal = array();
         $path = $this->nodeTreeQuery->getMaterialisedPath($this->getNodeId($node));
-        if(!empty($path)) foreach($path as $element) {
+        if (!empty($path)) foreach ($path as $element) {
             $returnVal[] = array('id' => key($element), 'label' => current($element));
         }
         return $returnVal;
@@ -129,18 +129,19 @@ class NavigationHelper implements NavigationHelperInterface
     private function getNodeId($node)
     {
         $nodeId = $node;
-        if($node instanceof \FlintLabs\Component\FlintCMS\Entity\Node) {
+        if ($node instanceof \FlintLabs\Component\FlintCMS\Entity\Node) {
             $nodeId = $node->getId();
-        } else if(is_array($node) && !empty($node['id'])) {
+        } else if (is_array($node) && !empty($node['id'])) {
             $nodeId = $node['id'];
-        } else if(is_string($node)) {
+        } else if (is_string($node)) {
             try {
                 $nodeId = $this->nodeRouter->findIdByUrl($node);
-            } catch(\Exception $e) {}
+            } catch (\Exception $e) {
+            }
         }
         return $nodeId;
     }
-    
+
     /**
      * Return the top level children
      * @return void

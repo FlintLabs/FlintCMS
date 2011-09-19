@@ -166,14 +166,14 @@ class NodeTreeQueryService implements NodeTreeQueryServiceInterface
      */
     public function isHiddenForUser($node)
     {
-//        $repository = $this->entityManager->getRepository('FlintLabs\Component\FlintCMS\Entity\Node');
-//        if (!($node instanceof \FlintLabs\Component\FlintCMS\Entity\Node)) {
-//            $node = $repository->findOneById($node);
-//        }
-//        $path = $repository->getPath($node);
-//        foreach($path as $element) {
-//            if($element->getFragment()->isHidden()) return true;
-//        }
+        //        $repository = $this->entityManager->getRepository('FlintLabs\Component\FlintCMS\Entity\Node');
+        //        if (!($node instanceof \FlintLabs\Component\FlintCMS\Entity\Node)) {
+        //            $node = $repository->findOneById($node);
+        //        }
+        //        $path = $repository->getPath($node);
+        //        foreach($path as $element) {
+        //            if($element->getFragment()->isHidden()) return true;
+        //        }
         return false;
     }
 }
