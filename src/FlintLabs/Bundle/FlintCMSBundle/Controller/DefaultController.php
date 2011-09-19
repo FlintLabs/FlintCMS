@@ -40,7 +40,7 @@ class DefaultController
 
     /**
      * Templating mapper for mapping nodes to correct views
-     * @var \FlintLabs\Bundle\FlintCMSBundle\Service\TemplateMappingServiceInterface
+     * @var \FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface
      */
     private $templateMapping;
 
@@ -62,8 +62,8 @@ class DefaultController
 
     /**
      * @param \FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface $router
-     * @param \FlintLabs\Bundle\FlintCMSBundle\Service\DispatcherServiceInterface $dispatcher
-     * @param \FlintLabs\Bundle\FlintCMSBundle\Service\TemplateMappingServiceInterface $templateMapping
+     * @param \FlintLabs\Component\FlintCMS\Dispatcher\DispatcherServiceInterface $dispatcher
+     * @param \FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface $templateMapping
      * @param \Symfony\Component\Templating\EngineInterface $templateEngine
      * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $eventDispatcher
      * @param \Symfony\Component\HttpKernel\Log\LoggerInterface $log

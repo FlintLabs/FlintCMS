@@ -10,8 +10,8 @@
 
 namespace FlintLabs\Bundle\FlintCMSBundle\Twig\Extension;
 use FlintLabs\Bundle\FlintCMSBundle\Twig\TokenParser\FlintRegionTokenParser,
-FlintLabs\Bundle\FlintCMSBundle\Service\TemplateMappingServiceInterface,
-FlintLabs\Bundle\FlintCMSBundle\Service\FormatConverterServiceInterface,
+FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface,
+FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface,
 FlintLabs\Bundle\FlintCMSBundle\Twig\NavigationHelperInterface,
 Symfony\Component\HttpKernel\Log\LoggerInterface;
 /**
@@ -46,9 +46,9 @@ class BaseExtension extends \Twig_Extension
     protected $log;
 
     /**
-     * @param \FlintLabs\Bundle\FlintCMSBundle\Service\TemplateMappingServiceInterface $templateMapping
+     * @param \FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface $templateMapping
      * @param \FlintLabs\Bundle\FlintCMSBundle\Twig\NavigationHelperInterface $navigationHelper
-     * @param \FlintLabs\Bundle\FlintCMSBundle\Service\FormatConverterServiceInterface $formatConverter
+     * @param \FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface $formatConverter
      */
     public function __construct(NavigationHelperInterface $navigationHelper,
         FormatConverterServiceInterface $formatConverter,
@@ -60,7 +60,7 @@ class BaseExtension extends \Twig_Extension
     }
 
     /**
-     * @param \FlintLabs\Bundle\FlintCMSBundle\Service\TemplateMappingServiceInterface $templateMapping
+     * @param \FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface $templateMapping
      * @return void
      */
     public function setTemplateMapping(TemplateMappingServiceInterface $templateMapping)

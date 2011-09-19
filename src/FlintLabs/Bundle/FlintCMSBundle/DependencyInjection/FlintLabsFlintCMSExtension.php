@@ -36,6 +36,6 @@ class FlintLabsFlintCMSExtension extends Extension
 
     public function getAlias()
     {
-        return 'flint_cms';
+        return 'flint_labs_flint_cms';
     }
 }

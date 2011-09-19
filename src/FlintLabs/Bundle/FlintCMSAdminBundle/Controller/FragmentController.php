@@ -15,7 +15,12 @@ namespace FlintLabs\Bundle\FlintCMSAdminBundle;
  */
 class FragmentController 
 {
-    public function createAction($type, $context)
+    /**
+     * @Route('/admin/fragment/{fragmentTypeAlias}/create')
+     * @param $fragmentTypeAlias
+     * @return void
+     */
+    public function createAction($fragmentTypeAlias)
     {
         // Build the form to modify the specific type
         

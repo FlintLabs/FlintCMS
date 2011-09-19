@@ -22,7 +22,7 @@ class NodeRouterService implements NodeRouterServiceInterface
 {
 
     /**
-     * @var \Doctrine\ORM\EntityManager|\FlintLabs\Bundle\FlintCMSBundle\Service\EntityManager
+     * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager;
 

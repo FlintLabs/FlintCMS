@@ -9,7 +9,7 @@
  */
 
 namespace FlintLabs\Bundle\FlintCMSBundle\Twig;
-use FlintLabs\Bundle\FlintCMSBundle\Service\NodeTreeQueryServiceInterface,
+use FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface,
 FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface;
 /**
  *
@@ -23,13 +23,13 @@ class NavigationHelper implements NavigationHelperInterface
     private $nodeRouter;
     
     /**
-     * @var \FlintLabs\Bundle\FlintCMSBundle\Service\NodeTreeQueryServiceInterface
+     * @var \FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface
      */
     private $nodeTreeQuery;
 
     /**
      * @param \FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface $nodeRouter
-     * @param \FlintLabs\Bundle\FlintCMSBundle\Service\NodeTreeQueryServiceInterface $nodeTreeQuery
+     * @param \FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface $nodeTreeQuery
      */
     public function __construct(NodeRouterServiceInterface $nodeRouter, NodeTreeQueryServiceInterface $nodeTreeQuery)
     {
