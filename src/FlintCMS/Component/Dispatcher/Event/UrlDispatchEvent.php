@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Component\FlintCMS\Dispatcher\Event;
+namespace FlintCMS\Component\Dispatcher\Event;
 use Symfony\Component\HttpFoundation\Response,
 Symfony\Component\EventDispatcher\Event;
 /**

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Component\FlintCMS\Dispatcher;
+namespace FlintCMS\Component\Dispatcher;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)

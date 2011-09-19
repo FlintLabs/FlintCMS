@@ -4,7 +4,7 @@
  * Date: 29/08/11
  */
 
-namespace FlintLabs\Component\FlintCMS\Util;
+namespace FlintCMS\Component\Util;
 
 /**
  * Handles converting data between formats

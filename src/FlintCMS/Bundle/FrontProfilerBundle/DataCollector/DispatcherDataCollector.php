@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSProfilerBundle\DataCollector;
-use FlintLabs\Component\FlintCMS\Dispatcher\DispatcherServiceInterface;
-use FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface;
+namespace FlintCMS\Bundle\FrontProfilerBundle\DataCollector;
+use FlintCMS\Component\Dispatcher\DispatcherServiceInterface;
+use FlintCMS\Component\Template\TemplateMappingServiceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
-use FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface;
+use FlintCMS\Component\Util\FormatConverterServiceInterface;
 
 /**
  * Hooks into the dispatch service to observe what node was dispatched
@@ -25,7 +25,7 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
 {
 
     /**
-     * @var \FlintLabs\Component\FlintCMS\Dispatcher\DispatcherServiceInterface
+     * @var \FlintCMS\Component\Dispatcher\DispatcherServiceInterface
      */
     private $dispatcher;
 
@@ -55,12 +55,12 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
     private $engine;
 
     /**
-     * @var \FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface
+     * @var \FlintCMS\Component\Util\FormatConverterServiceInterface
      */
     private $formatConverter;
 
     /**
-     * @param \FlintLabs\Component\FlintCMS\Dispatcher\DispatcherServiceInterface $dispatcher
+     * @param \FlintCMS\Component\Dispatcher\DispatcherServiceInterface $dispatcher
      */
     public function __construct(DispatcherServiceInterface $dispatcher, TemplateMappingServiceInterface $templateMapping, FormatConverterServiceInterface $formatConverter, EngineInterface $engine)
     {

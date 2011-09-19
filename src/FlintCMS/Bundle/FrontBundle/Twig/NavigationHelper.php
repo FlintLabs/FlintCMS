@@ -9,8 +9,8 @@
  */
 
 namespace FlintCMS\Bundle\FrontBundle\Twig;
-use FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface,
-FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface;
+use FlintCMS\Component\Routing\NodeTreeQueryServiceInterface,
+FlintCMS\Component\Routing\NodeRouterServiceInterface;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)
@@ -18,18 +18,18 @@ FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface;
 class NavigationHelper implements NavigationHelperInterface
 {
     /**
-     * @var \FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface
+     * @var \FlintCMS\Component\Routing\NodeRouterServiceInterface
      */
     private $nodeRouter;
 
     /**
-     * @var \FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface
+     * @var \FlintCMS\Component\Routing\NodeTreeQueryServiceInterface
      */
     private $nodeTreeQuery;
 
     /**
-     * @param \FlintLabs\Component\FlintCMS\Routing\NodeRouterServiceInterface $nodeRouter
-     * @param \FlintLabs\Component\FlintCMS\Routing\NodeTreeQueryServiceInterface $nodeTreeQuery
+     * @param \FlintCMS\Component\Routing\NodeRouterServiceInterface $nodeRouter
+     * @param \FlintCMS\Component\Routing\NodeTreeQueryServiceInterface $nodeTreeQuery
      */
     public function __construct(NodeRouterServiceInterface $nodeRouter, NodeTreeQueryServiceInterface $nodeTreeQuery)
     {
@@ -129,7 +129,7 @@ class NavigationHelper implements NavigationHelperInterface
     private function getNodeId($node)
     {
         $nodeId = $node;
-        if ($node instanceof \FlintLabs\Component\FlintCMS\Entity\Node) {
+        if ($node instanceof \FlintCMS\Component\Entity\Node) {
             $nodeId = $node->getId();
         } else if (is_array($node) && !empty($node['id'])) {
             $nodeId = $node['id'];

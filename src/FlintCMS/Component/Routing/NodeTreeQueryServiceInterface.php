@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Component\FlintCMS\Routing;
+namespace FlintCMS\Component\Routing;
 
 /**
  * Used for managing node tree querying

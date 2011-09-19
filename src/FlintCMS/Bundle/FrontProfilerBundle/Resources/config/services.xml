@@ -3,15 +3,13 @@
 		   xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
 	<parameters>
-		<parameter key="flint_cms_profiler.data_collector.dispatcher.class">
-			FlintLabs\Bundle\FlintCMSProfilerBundle\DataCollector\DispatcherDataCollector
-		</parameter>
+		<parameter key="flint_cms_profiler.data_collector.dispatcher.class">FlintCMS\Bundle\FrontProfilerBundle\DataCollector\DispatcherDataCollector</parameter>
 	</parameters>
 
 	<services>
 		<service id="flint_cms_profiler.data_collector.dispatcher"
 				 class="%flint_cms_profiler.data_collector.dispatcher.class%" public="false">
-			<tag name="data_collector" template="FlintLabsFlintCMSProfilerBundle:DataCollector:dispatcher"
+			<tag name="data_collector" template="FlintCMSFrontProfilerBundle:DataCollector:dispatcher"
 				 id="flint_cms_dispatcher"/>
 			<argument type="service" id="flint_cms.dispatcher"/>
 			<argument type="service" id="flint_cms.template_mapping"/>

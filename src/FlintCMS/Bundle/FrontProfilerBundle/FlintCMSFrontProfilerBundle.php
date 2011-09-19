@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSProfilerBundle;
+namespace FlintCMS\Bundle\FrontProfilerBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

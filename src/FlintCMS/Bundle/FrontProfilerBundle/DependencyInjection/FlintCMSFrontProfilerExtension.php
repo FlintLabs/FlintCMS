@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Bundle\FlintCMSProfilerBundle\DependencyInjection;
+namespace FlintCMS\Bundle\FrontProfilerBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

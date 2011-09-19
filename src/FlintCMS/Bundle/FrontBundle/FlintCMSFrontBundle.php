@@ -11,7 +11,7 @@ namespace FlintCMS\Bundle\FrontBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class FlintCMSFrontProfilerBundle extends Bundle
+class FlintCMSFrontBundle extends Bundle
 {
 
 }

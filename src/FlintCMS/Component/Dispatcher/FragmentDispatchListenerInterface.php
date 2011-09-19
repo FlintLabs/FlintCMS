@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Component\FlintCMS\Dispatcher;
-use FlintLabs\Component\FlintCMS\Dispatcher\Event\FragmentEvent;
+namespace FlintCMS\Component\Dispatcher;
+use FlintCMS\Component\Dispatcher\Event\FragmentEvent;
 
 /**
  * Listens to events

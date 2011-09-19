@@ -10,8 +10,8 @@
 
 namespace FlintCMS\Bundle\FrontBundle\Twig\Extension;
 use FlintCMS\Bundle\FrontBundle\Twig\TokenParser\FlintRegionTokenParser,
-FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface,
-FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface,
+FlintCMS\Component\Template\TemplateMappingServiceInterface,
+FlintCMS\Component\Util\FormatConverterServiceInterface,
 FlintCMS\Bundle\FrontBundle\Twig\NavigationHelperInterface,
 Symfony\Component\HttpKernel\Log\LoggerInterface;
 /**
@@ -46,9 +46,9 @@ class BaseExtension extends \Twig_Extension
     protected $log;
 
     /**
-     * @param \FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface $templateMapping
+     * @param \FlintCMS\Component\Template\TemplateMappingServiceInterface $templateMapping
      * @param \FlintCMS\Bundle\FrontBundle\Twig\NavigationHelperInterface $navigationHelper
-     * @param \FlintLabs\Component\FlintCMS\Util\FormatConverterServiceInterface $formatConverter
+     * @param \FlintCMS\Component\Util\FormatConverterServiceInterface $formatConverter
      */
     public function __construct(NavigationHelperInterface $navigationHelper,
         FormatConverterServiceInterface $formatConverter,
@@ -60,7 +60,7 @@ class BaseExtension extends \Twig_Extension
     }
 
     /**
-     * @param \FlintLabs\Component\FlintCMS\Template\TemplateMappingServiceInterface $templateMapping
+     * @param \FlintCMS\Component\Template\TemplateMappingServiceInterface $templateMapping
      * @return void
      */
     public function setTemplateMapping(TemplateMappingServiceInterface $templateMapping)

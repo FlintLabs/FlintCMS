@@ -4,8 +4,8 @@
  * Date: 29/08/11
  */
 
-namespace FlintLabs\Component\FlintCMS\Template;
-use FlintLabs\Component\FlintCMS\Entity\Fragment;
+namespace FlintCMS\Component\Template;
+use FlintCMS\Component\Entity\Fragment;
 
 /**
  * Handles mapping fragments to views to be rendered

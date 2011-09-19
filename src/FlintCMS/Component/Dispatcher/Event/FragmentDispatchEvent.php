@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 
-namespace FlintLabs\Component\FlintCMS\Dispatcher\Event;
-use FlintLabs\Component\FlintCMS\Entity\Fragment,
+namespace FlintCMS\Component\Dispatcher\Event;
+use FlintCMS\Component\Entity\Fragment,
 Symfony\Component\EventDispatcher\Event;
 
 /**
@@ -20,12 +20,12 @@ class FragmentDispatchEvent extends Event
 {
     /**
      * $the fragment entity
-     * @var \FlintLabs\Component\FlintCMS\Entity\Fragment
+     * @var \FlintCMS\Component\Entity\Fragment
      */
     private $fragment;
 
     /**
-     * @param \FlintLabs\Component\FlintCMS\Entity\Fragment $fragment
+     * @param \FlintCMS\Component\Entity\Fragment $fragment
      */
     public function __construct(Fragment $fragment)
     {
@@ -33,7 +33,7 @@ class FragmentDispatchEvent extends Event
     }
 
     /**
-     * @return \FlintLabs\Component\FlintCMS\Entity\Fragment
+     * @return \FlintCMS\Component\Entity\Fragment
      */
     public function getFragment()
     {
