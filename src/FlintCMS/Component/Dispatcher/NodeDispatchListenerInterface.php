@@ -9,7 +9,7 @@
  */
 
 namespace FlintCMS\Component\Dispatcher;
-use FlintCMS\Component\Dispatcher\Event\NodeEvent;
+use FlintCMS\Component\Dispatcher\Event\NodeDispatchEvent;
 
 /**
  * On encountering nodes

@@ -231,7 +231,8 @@ class DispatcherDataCollector extends \Symfony\Component\HttpKernel\DataCollecto
         $count = 0;
         if (!empty($this->data['collections']['node'])) $count++;
         if (!empty($this->data['collections']['nodeAttachedFragment'])) $count++;
-        foreach ($this->data['collections']['children'] as $child) $count++;
+        if(!empty($this->data['collections']['children']))
+            $count += count($this->data['collections']['children']);
         return $count;
     }
 

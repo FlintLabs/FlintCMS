@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="{{ asset('bundles/flintcmsadmin/css/style.css') }}">
+{#<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">#}
+<script>window.jQuery || document.write('<script src="{{ asset('bundles/flintcmsadmin/js/libs/jquery-1.6.2.min.js') }}"><\/script>')</script>
+<script type="text/javascript" src="{{ asset('bundles/flintcmsadmin/js/libs/bootstrap-dropdown-1.3.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/flintcmsadmin/js/panel.js') }}"></script>
+<div id="fcmsa" data-dropdown="dropdown">
+      <div class="topbar-inner" style="margin: 0px 10px">
+        <div class="container">
+          <a class="brand" href="#">Page »</a>
+          <ul class="nav">
+            <li><a href="#edit">Edit</a></li>
+            <li class="dropdown">
+                <a href="#edit" class="dropdown-toggle">Add</a>
+                <ul class="dropdown-menu">
+                    <li><a href="">Sub-page</a></li>
+                </ul>
+            </li>
+          </ul>
+          <form class="pull-right" method="post">
+            <input type="text" placeholder="Search"/>
+          </form>
+          <ul class="nav secondary-nav">
+            <li><a href="#">Switch view</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Admin</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Modify permissions</a></li>
+                    <li><a href="#">View change history</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
