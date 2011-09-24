@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 namespace FlintCMS\Bundle\AdminBundle\Entity\Repository;
-use Doctrine\ORM\EntityRepository;
-
+use Doctrine\ORM\EntityRepository,
+Doctrine\ORM\Query;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)

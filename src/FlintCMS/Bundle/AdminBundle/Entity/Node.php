@@ -8,21 +8,67 @@
  * file that was distributed with this source code.
  */
 namespace FlintCMS\Bundle\AdminBundle\Entity;
-
+use Doctrine\ORM\Mapping as ORM,
+Gedmo\Tree\Node as NodeInterface,
+Gedmo\Mapping\Annotation as DoctrineExtensions;
 /**
- *
+ * @ORM\Entity(repositoryClass="FlintCMS\Bundle\AdminBundle\Entity\Repository\NodeRepository")
+ * @ORM\Table(name="node")
  * @author camm (camm@flintinteractive.com.au)
  */
-class Node
+class Node implements NodeInterface
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var int
+     */
     protected $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Fragment", inversedBy="node", fetch="EAGER")
+     * @var FlintLabs\Bundle\FlintCMSBundle\Entity\Fragment
+     */
     protected $fragment;
+
+    /**
+     * @ORM\Column(name="label")
+     * @var string
+     */
     protected $label;
 
+    /**
+     * @ORM\DoctrineExtensions\TreeParent
+     * @ORM\ManyToOne(targetEntity="Node", inversedBy="children", fetch="LAZY")
+     * @ORM\JoinColumn(name="parent_node_id", referencedColumnName="node_id", nullable="true")
+     * @var Node
+     */
     protected $parent;
     protected $root;
+
+    /**
+     * @ORM\DoctrineExtensions\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
+     * @var int
+     */
     protected $left;
+
+    /**
+     * @ORM\DoctrineExtensions\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     * @var int
+     */
     protected $right;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Node", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     * @var array
+     */
+    protected $children;
+
+    
     protected $depth;
 
     protected $created;

@@ -3,7 +3,7 @@
  * Copyright Cameron Manderson (c) 2011 All rights reserved.
  * Date: 19/09/11
  */
-
+namespace FlintCMS\Bundle\AdminBundle\Entity;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)

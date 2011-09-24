@@ -9,6 +9,9 @@
  */
 namespace FlintCMS\Bundle\AdminBundle\Entity\Repository;
 
+use Doctrine\ORM\EntityRepository,
+Doctrine\ORM\Query;
+
 /**
  *
  * @author camm (camm@flintinteractive.com.au)

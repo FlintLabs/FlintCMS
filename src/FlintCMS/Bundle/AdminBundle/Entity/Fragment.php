@@ -8,32 +8,30 @@
  * file that was distributed with this source code.
  */
 namespace FlintCMS\Bundle\AdminBundle\Entity;
-
+use Doctrine\ORM\Mapping as ORM;
 /**
- * 
- *
- * @Entity(repositoryClass="FlintCMS\Bundle\AdminBundle\Entity\Repository\FragmentRepository")
- * @Table(name="fragment")
+ * @ORM\Entity(repositoryClass="FlintCMS\Bundle\AdminBundle\Entity\Repository\FragmentRepository")
+ * @ORM\Table(name="fragment")
  * @author camm (camm@flintinteractive.com.au)
  */
 class Fragment implements ViewModelContainerInterface
 {
     /**
-     * @Id
-     * @Column(type="integer")
-     * @GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @var int
      */
     protected $id;
 
     /**
-     * @Column
+     * @ORM\Column
      * @var string
      */
     protected $type;
 
     /**
-     * @ORM:Column(type='object')
+     * @ORM\ORM:Column(type='object')
      * @var string
      */
     protected $data;
@@ -44,19 +42,42 @@ class Fragment implements ViewModelContainerInterface
     protected $viewData;
 
     /**
+     * @ORM\OneToMany(targetEntity="Fragment", mappedBy="parent")
      * @var ArrayCollection
      */
     protected $children;
 
     /**
-     * @var 
+     * @ORM\ManyToOne(targetEntity="Fragment", inversedBy="children")
+     * @var Fragment
      */
     protected $parent;
+
+    /**
+     * @ORM\Column(type="integer", name="region", nullable="true")
+     * @var int
+     */
     protected $region;
+
+    /**
+     * @ORM\Column(type="integer", name="sort_order", nullable="true")
+     * @var int
+     */
     protected $sortOrder;
 
+    /**
+     * @ORM\Column(name="created", type="datetime")
+     * @var \DateTime
+     */
     protected $created;
+
+    /**
+     * @ORM\Column(type="integer", name="version")
+     * @var int
+     */
     protected $version;
+
+    
     protected $user;
 
     /**
