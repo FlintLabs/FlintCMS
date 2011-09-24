@@ -9,7 +9,7 @@
  */
 
 namespace FlintCMS\Component\Dispatcher;
-use FlintCMS\Component\Dispatcher\Event\FragmentEvent;
+use FlintCMS\Component\Dispatcher\Event\FragmentDispatchEvent;
 
 /**
  * Listens to events
