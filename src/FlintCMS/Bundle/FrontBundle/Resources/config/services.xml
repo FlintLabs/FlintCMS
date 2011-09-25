@@ -26,8 +26,6 @@
 		<parameter key="flint_cms.listeners.default.fragment.data.class">FlintCMS\Bundle\FrontBundle\EventListener\Fragment\FragmentBaseViewDataListener</parameter>
 		<parameter key="flint_cms.listeners.default.fragment.redirect.class">FlintCMS\Bundle\FrontBundle\EventListener\Fragment\RedirectFragmentListener</parameter>
 
-		<!-- Doctrine Extension Listener -->
-		<parameter key="flint_cms.tree.listener.class">Gedmo\Tree\TreeListener</parameter>
 
 		<!-- Twig Extensions -->
 		<parameter key="flint_cms.twig.base.extension.class">FlintCMS\Bundle\FrontBundle\Twig\Extension\BaseExtension</parameter>
@@ -72,11 +70,6 @@
 			<tag name="kernel.event_listener" event="fragmentDispatch"/>
 			<argument type="service" id="flint_cms.node_router"/>
 			<argument type="service" id="logger"/>
-		</service>
-
-		<!-- Doctrine Extension Listener: Tree  -->
-		<service id="flint_cms.tree.listener" class="%flint_cms.tree.listener.class%">
-			<tag name="doctrine.event_subscriber" connection="default"/>
 		</service>
 
 		<!-- Base Controller -->
