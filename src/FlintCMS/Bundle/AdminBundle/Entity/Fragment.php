@@ -34,7 +34,7 @@ class Fragment implements ViewModelContainerInterface
     protected $type;
 
     /**
-     * @ORM\ORM:Column(type='object')
+     * @ORM\Column(type="object")
      * @DoctrineExtensions\Versioned
      * @var string
      */
