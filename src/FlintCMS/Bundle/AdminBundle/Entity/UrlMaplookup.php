@@ -21,31 +21,31 @@ class UrlMaplookup
     /**
      * @ORM\Id @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\var int
+     * @var int
      */
     protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Node", inversedBy="urlMapLookups", fetch="EAGER")
-     * @ORM\var Node
+     * @var Node
      */
     protected $node;
 
     /**
      * @ORM\Column
-     * @ORM\var string
+     * @var string
      */
     protected $url;
 
     /**
      * @ORM\Column(type="integer")
-     * @ORM\var int
+     * @var int
      */
     protected $state;
 
     /**
      * @ORM\Column(type="datetime")
-     * @ORM\var \DateTime
+     * @var \DateTime
      */
     protected $created;
 

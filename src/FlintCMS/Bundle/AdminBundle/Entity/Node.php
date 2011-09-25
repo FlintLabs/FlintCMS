@@ -14,6 +14,7 @@ Gedmo\Mapping\Annotation as DoctrineExtensions;
 /**
  * @ORM\Entity(repositoryClass="FlintCMS\Bundle\AdminBundle\Entity\Repository\NodeRepository")
  * @ORM\Table(name="node")
+ * @DoctrineExtensions\Tree(type="nested")
  * @author camm (camm@flintinteractive.com.au)
  */
 class Node implements NodeInterface
@@ -28,7 +29,7 @@ class Node implements NodeInterface
 
     /**
      * @ORM\OneToOne(targetEntity="Fragment", inversedBy="node", fetch="EAGER")
-     * @var FlintLabs\Bundle\FlintCMSBundle\Entity\Fragment
+     * @var FlintCMS\Bundle\AdminBundle\Entity\Fragment
      */
     protected $fragment;
 
@@ -39,23 +40,28 @@ class Node implements NodeInterface
     protected $label;
 
     /**
-     * @ORM\DoctrineExtensions\TreeParent
-     * @ORM\ManyToOne(targetEntity="Node", inversedBy="children", fetch="LAZY")
-     * @ORM\JoinColumn(name="parent_node_id", referencedColumnName="node_id", nullable="true")
-     * @var Node
+     * @ORM\Column(type="integer", nullable=true)
+     * @DoctrineExtensions\TreeRoot
      */
-    protected $parent;
     protected $root;
 
     /**
-     * @ORM\DoctrineExtensions\TreeLeft
+     * @DoctrineExtensions\TreeParent
+     * @ORM\ManyToOne(targetEntity="Node", inversedBy="children", fetch="LAZY")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
+     * @var Node
+     */
+    protected $parent;
+
+    /**
+     * @DoctrineExtensions\TreeLeft
      * @ORM\Column(name="lft", type="integer")
      * @var int
      */
     protected $left;
 
     /**
-     * @ORM\DoctrineExtensions\TreeRight
+     * @DoctrineExtensions\TreeRight
      * @ORM\Column(name="rgt", type="integer")
      * @var int
      */
@@ -68,10 +74,27 @@ class Node implements NodeInterface
      */
     protected $children;
 
-    
+    /**
+     * @ORM\Column(type="integer")
+     * @DoctrineExtensions\TreeLevel
+     * @var
+     */
     protected $depth;
 
+    /**
+     * @ORM\Column(type="datetime")
+     * @DoctrineExtensions\Timestampable(on="create")
+     * @var \DateTime
+     */
     protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @DoctrineExtensions\Timestampable(on="update")
+     */
+    protected $updated;
+
+    
     protected $user;
 
 

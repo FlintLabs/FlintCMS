@@ -8,10 +8,12 @@
  * file that was distributed with this source code.
  */
 namespace FlintCMS\Bundle\AdminBundle\Entity;
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM,
+Gedmo\Mapping\Annotation as DoctrineExtensions;
 /**
  * @ORM\Entity(repositoryClass="FlintCMS\Bundle\AdminBundle\Entity\Repository\FragmentRepository")
  * @ORM\Table(name="fragment")
+ * @DoctrineExtensions\Loggable
  * @author camm (camm@flintinteractive.com.au)
  */
 class Fragment implements ViewModelContainerInterface
@@ -26,12 +28,14 @@ class Fragment implements ViewModelContainerInterface
 
     /**
      * @ORM\Column
+     * @DoctrineExtensions\Versioned
      * @var string
      */
     protected $type;
 
     /**
      * @ORM\ORM:Column(type='object')
+     * @DoctrineExtensions\Versioned
      * @var string
      */
     protected $data;
@@ -49,34 +53,37 @@ class Fragment implements ViewModelContainerInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="Fragment", inversedBy="children")
+     * @DoctrineExtensions\Versioned
      * @var Fragment
      */
     protected $parent;
 
     /**
-     * @ORM\Column(type="integer", name="region", nullable="true")
+     * @ORM\Column(type="integer", nullable="true")
+     * @DoctrineExtensions\Versioned
      * @var int
      */
     protected $region;
 
     /**
      * @ORM\Column(type="integer", name="sort_order", nullable="true")
+     * @DoctrineExtensions\Versioned
      * @var int
      */
     protected $sortOrder;
 
     /**
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(type="datetime")
+     * @DoctrineExtensions\Timestampable(on="create")
      * @var \DateTime
      */
     protected $created;
 
     /**
-     * @ORM\Column(type="integer", name="version")
-     * @var int
+     * @ORM\Column(type="datetime")
+     * @DoctrineExtensions\Timestampable(on="update")
      */
-    protected $version;
-
+    protected $updated;
     
     protected $user;
 
